@@ -5,14 +5,13 @@
 	import View3 from './View3.svelte';
 	export let name: string = 'App';
 	let views = 1;
-	let count = 0;
 </script>
 <header>
-	<Header bind:views={views} bind:count={count}/>
+	<Header bind:views={views}/>
 </header>
 <main>
 	{#if views === 1 }
-	<View1 names={name} views={views} bind:count={count} />
+	<View1 names={name} views={views} />
 	{:else if views ===2}
 	<View2 />
 	{:else}

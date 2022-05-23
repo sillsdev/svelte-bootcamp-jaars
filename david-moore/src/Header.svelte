@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let views = 1;
-    export let count = 0;
+    import { count } from './stores.js';
     const pageNames = ['View One', 'View Two', 'View Three'];
     function switchPage(pageName) {
         for (let i = 0; i < pageNames.length; i++) {
@@ -25,7 +25,7 @@
         </ul>
 
         <div style="float: left; width: 25%">
-            Counter = {count}
+            Counter = {$count}
         </div>
 	</div>
 </main>
