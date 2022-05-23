@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Nested from './Nested.svelte';
 	export let name: string;
 	let count = 0;
 	let numbers = [1, 2, 3, 4];
@@ -24,6 +25,8 @@ function addNumber() {
 $: sum = numbers.reduce((t, n) => t + n, 0);
 
 </script>
+
+<Nested answer={42}/>
 
 <main>
 	<h1>Hello? {name} ?!?</h1>
