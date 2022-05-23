@@ -12,7 +12,7 @@
 </header>
 <main>
 	{#if views === 1 }
-	<View1 bind:names={name} bind:views={views} bind:count={count} />
+	<View1 names={name} views={views} bind:count={count} />
 	{:else if views ===2}
 	<View2 />
 	{:else}
