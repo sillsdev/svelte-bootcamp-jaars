@@ -1,6 +1,14 @@
 <script lang="ts">
 	export let views = 1;
     export let count = 0;
+    const pageNames = ['View One', 'View Two', 'View Three'];
+    function switchPage(pageName) {
+        for (let i = 0; i < pageNames.length; i++) {
+            if (pageName === pageNames[i]) {
+                views = i + 1;
+            }
+        } 
+    }
 </script>
 
 <main>
@@ -8,29 +16,14 @@
 		<div style="float: left; width: 25%">
 				Header
 		</div>
-		<div style="float: left; width: 16%">
-            <label>
-                <input type=radio bind:group={views} name="views" value={1}>
-                View 1
+        <ul>
+            {#each pageNames as p}
+                <div style="float: left; width: 16%">
+                    <li><button on:click={() => switchPage(p)}>{p}</button></li>
+                </div>
+            {/each}
+        </ul>
 
-            </label>
-	    </div>
-        <div style="float: left; width: 16%">
-
-            <label>
-                <input type=radio bind:group={views} name="views" value={2}>
-                View 2
-
-            </label>
-        </div>
-        <div style="float: left; width: 18%">
-
-            <label>
-                <input type=radio bind:group={views} name="views" value={3}>
-                View 3
-
-            </label>
-        </div>
         <div style="float: left; width: 25%">
             Counter = {count}
         </div>
@@ -56,5 +49,9 @@
                 max-width: none;
             }
         }
-    
+        ul {
+        display: inline;
+        list-style-type: none;
+        margin: auto;
+        }
     </style>
