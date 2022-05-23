@@ -4,6 +4,9 @@ html, body {
 	height: 100%;
 }
 
+h1 {
+	margin-block-start: .1rem;
+}
 body {
 	color: #333;
 	margin: 0;
