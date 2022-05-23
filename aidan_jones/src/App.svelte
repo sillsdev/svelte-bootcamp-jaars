@@ -14,11 +14,11 @@
 	};
 </script>
 
+<Header/>
 <main>
-	<Header/>
 	<svelte:component this={pages[$page]}/>
-	<Footer/>
 </main>
+<Footer/>
 
 <style>
 	main {
