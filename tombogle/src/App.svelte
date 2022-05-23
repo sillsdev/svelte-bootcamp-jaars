@@ -1,25 +1,32 @@
 <script lang="ts">
+	import MainMenu from './MainMenu.svelte';
+	import NavigationButton from './NavigationButton.svelte'
+	import TitleBar from './TitleBar.svelte';
+
 	export let name: string;
+	export let version: string;
 </script>
 
 <main>
-	<h1>Hello {name.toLocaleUpperCase()}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<TitleBar name={name} version={version}/>
+	<MainMenu currentView={0} uiLocale="English"/>
+	<body>
+		<NavigationButton label="GEN" hasContent={true}/>
+		<NavigationButton label="EXO" hasContent={true} selected={true}/>
+		<NavigationButton label="LEV" hasContent={true}/>
+		<NavigationButton label="NUM" hasContent={false}/>
+		<NavigationButton label="DEU" hasContent={true}/>
+	</body>
 </main>
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+		background-color: black;
 	}
-
-	h1 {
-		color: #ff3e00;
-		/* text-transform: uppercase; */
-		font-size: 4em;
-		font-weight: 100;
+	body {
+		padding: 10px;
+		margin: 10px auto;
+		white-space:nowrap;
 	}
 
 	@media (min-width: 640px) {

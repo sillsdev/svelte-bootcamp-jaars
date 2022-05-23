@@ -3,7 +3,8 @@ import App from './App.svelte';
 const app = new App({
 	target: document.body,
 	props: {
-		name: 'Lily'
+		name: 'De Nyew Testament',
+		version: '4.0.0',
 	}
 });
 
