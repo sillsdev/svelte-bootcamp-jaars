@@ -1,10 +1,23 @@
 <script>
-	export let name;
+	import Header from './Header.svelte';
+	import Footer from './Footer.svelte';
+	import View_One from './View_One.svelte';
+	import View_Two from './View_Two.svelte';
+	import View_Three from './View_Three.svelte';
+	import { page } from './stores.js';
+	
+
+	const pages = {
+		'View One': View_One,
+		'View Two': View_Two,
+		'View Three': View_Three,
+	};
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Header/>
+	<svelte:component this={pages[$page]}/>
+	<Footer/>
 </main>
 
 <style>
@@ -13,13 +26,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
