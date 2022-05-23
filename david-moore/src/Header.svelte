@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let views = 1;
+    export let count = 0;
 </script>
 
 <main>
@@ -31,7 +32,7 @@
             </label>
         </div>
         <div style="float: left; width: 25%">
-            Counter
+            Counter = {count}
         </div>
 	</div>
 </main>

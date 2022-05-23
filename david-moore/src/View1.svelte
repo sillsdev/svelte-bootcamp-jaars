@@ -1,13 +1,16 @@
 <script lang="ts">
 	export let views = 1;
     export let names = "World";
+    export let count = 0;
 </script>
 <h2>Hello {names}!</h2>
 <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 <p>
     Views is {views}
 </p>
-
+<button on:click={() => count--} >-</button>
+<input type=number bind:value={count}/>
+<button on:click={() => count++}>+</button>
 <style>
     	main {
 		text-align: center;
