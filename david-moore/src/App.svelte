@@ -1,12 +1,27 @@
 <script lang="ts">
+	import Header from './Header.svelte';
 	export let name: string;
+	let views = 1;
 </script>
-
+<header>
+	<Header/>
+</header>
 <main>
-	<h1>Hello {name}!</h1>
+	{#if views === 1 }
+	<h2>Hello {name}!</h2>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<p>
+		Views is {views}
+	</p>
+	{:else if views ===2}
+	<h2> View 2 </h2>
+	{:else}
+	<h2>Must be View 3</h2>
+	{/if} 
 </main>
-
+<footer>
+	<f1>Footer Text</f1>
+</footer>
 <style>
 	main {
 		text-align: center;
@@ -27,4 +42,5 @@
 			max-width: none;
 		}
 	}
+
 </style>
