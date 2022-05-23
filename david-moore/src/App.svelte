@@ -1,22 +1,21 @@
 <script lang="ts">
 	import Header from './Header.svelte';
-	export let name: string;
+	import View1 from './View1.svelte';
+	import View2 from './View2.svelte';
+	import View3 from './View3.svelte';
+	export let name: string = 'App';
 	let views = 1;
 </script>
 <header>
-	<Header/>
+	<Header bind:views={views}/>
 </header>
 <main>
 	{#if views === 1 }
-	<h2>Hello {name}!</h2>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<p>
-		Views is {views}
-	</p>
+	<View1 bind:names={name} bind:views={views} />
 	{:else if views ===2}
-	<h2> View 2 </h2>
+	<View2 />
 	{:else}
-	<h2>Must be View 3</h2>
+	<View3 />
 	{/if} 
 </main>
 <footer>
