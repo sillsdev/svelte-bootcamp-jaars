@@ -6,8 +6,8 @@ import Publish from "./views/Publish.svelte";
 
 export default {
   "/": ChooseProject,
-  "/publish": Publish,
-  "/settings": Settings,
-  "/record": Record,
-  "/check": Check,
+  "/:project/publish": Publish,
+  "/:project/settings": Settings,
+  "/:project/record/:book?/:chapter?/:block?": Record,
+  "/:project/check/:book?/:chapter?/:block?": Check,
 };
