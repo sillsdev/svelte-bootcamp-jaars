@@ -1,10 +1,15 @@
 <script lang="ts">
+	import { currentBook, currentChapter } from './stores.js';
+
 	export let label: string;
 	export let hasContent: boolean;
-	export let selected: boolean = false;
+
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 </script>
 
-<button class:hasContent class:selected>{label}</button>
+<button class:hasContent class:selected="{$currentBook==label || $currentChapter.toString()==label}" onclick="{() => {dispatch('clicked')}}">{label}</button>
 
 <style>
 	button {
