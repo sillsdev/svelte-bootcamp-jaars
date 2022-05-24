@@ -20,7 +20,7 @@
       {#each pages as page}
         <li>
           <!-- svelte-ignore a11y-missing-attribute -->
-          <a use:link={`/${project.id}/${page.url}`}>{page.label}</a>
+          <a use:link href={`/${project.id}/${page.url}`}>{page.label}</a>
         </li>
       {/each}
     {/if}
