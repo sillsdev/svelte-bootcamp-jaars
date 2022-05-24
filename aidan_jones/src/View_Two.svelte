@@ -28,6 +28,7 @@
 <h1>View 2</h1>
 <form on:submit|preventDefault={submitForm}>
     <label for="email"><strong>Enter your email:</strong></label>
+    <!-- svelte-ignore a11y-autofocus -->
     <input type=text id="email" name="email" bind:value="{fields.email}" autofocus/>
     <input type="submit" value="enter"/>
     <p><em>{errors.email}</em></p>
