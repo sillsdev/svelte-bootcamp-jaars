@@ -4,7 +4,7 @@
 </script>
 
 <div>
-        <h3>Header</h3>
+        <h3>HearThis</h3>
         <ul>
             {#each navlists as list}
                 <li >
