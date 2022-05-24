@@ -3,6 +3,7 @@ import About from './views/About.svelte'
 import Settings from './views/Settings.svelte'
 import Search from './views/Search.svelte'
 import Notes from './views/Notes.svelte'
+import Highlights from './views/Highlights.svelte'
 
 export default {
     '/' : Home,
@@ -10,4 +11,5 @@ export default {
     '/settings' : Settings,
     '/search' : Search,
     '/notes' : Notes,
+    '/highlights': Highlights,
 };
