@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let currentBook: string = "GEN";
-	export let currentChapter: number = 2;
+	export let selected: boolean = false;
+	export let type: string;
 	export let label: string;
 	export let hasContent: boolean;
 
@@ -9,7 +9,7 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<button class:hasContent class:selected="{currentBook==label || currentChapter.toString()==label}" onclick="{() => {dispatch('clicked')}}">{label}</button>
+<button class:hasContent class:selected on:click="{() => {dispatch(`${type}Selected`, {book: label})}}">{label}</button>
 
 <style>
 	button {

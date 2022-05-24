@@ -1,6 +1,7 @@
 <script>
-import BookChooser from "../components/BookChooser.svelte";
-
+    import BookChooser from "../components/BookChooser.svelte";
+    export let params;
+    
 </script>
 <h1>Read &amp; Record</h1>
-<BookChooser/>
+<BookChooser selectedBook={params.book}/>
