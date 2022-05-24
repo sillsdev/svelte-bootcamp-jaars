@@ -15,9 +15,9 @@
 
 
 
+<Navbar navlists={Pages}/>
 
 <main>
-	<Navbar navlists={Pages}/>
 	<Router {routes} />
 </main>
 
