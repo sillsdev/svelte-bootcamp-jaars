@@ -1,6 +1,6 @@
 <script>
   import { location, link } from "svelte-spa-router";
-  import { projects } from "./stores.js";
+  import { projects } from "./stores";
   $: project = $projects.find((p) => p.id === $location.split("/")[1]);
   $: projectName = project ? project.name + " Project" : "";
 
