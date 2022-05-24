@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MainMenu from './MainMenu.svelte';
 	import NavigationButton from './NavigationButton.svelte'
+import { currentBook } from './stores';
 	import TitleBar from './TitleBar.svelte';
 
 	export let name: string;
@@ -9,10 +10,10 @@
 
 <main>
 	<TitleBar name={name} version={version}/>
-	<MainMenu currentView={0} uiLocale="English"/>
+	<MainMenu uiLocale="English"/>
 	<body>
-		<NavigationButton label="GEN" hasContent={true}/>
-		<NavigationButton label="EXO" hasContent={true} selected={true}/>
+		<NavigationButton label="GEN" hasContent={true} on:clicked="{() => $currentBook = "GEN"}"/>
+		<NavigationButton label="EXO" hasContent={true}/>
 		<NavigationButton label="LEV" hasContent={true}/>
 		<NavigationButton label="NUM" hasContent={false}/>
 		<NavigationButton label="DEU" hasContent={true}/>

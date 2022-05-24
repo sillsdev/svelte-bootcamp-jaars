@@ -1,14 +1,20 @@
 <script lang="ts">
-	export let currentView: number;
+	import { view } from './stores.js';
+
+	const viewNames = ['Read &amp; Record', 'Check for Problems'];
+	const viewIcons = ['headset', 'stethoscope'];
+
 	export let uiLocale: string;
-/* 	showMessage() {
-		postMessage("clicked")
-	} */
+
+	function switchView(viewName) {
+        view.set(viewName);
+    }
 </script>
 
 <menubar>
-	<menuitem class:selected ="{currentView==0}" name="menuReadAndRecord"><img src="images/headset.png" alt="logo"/>Read &amp; Record</menuitem>
-	<menuitem class:selected ="{currentView==1}" name="menuCheckForProblems"><img src="images/stethoscope.png" alt="logo"/>Check for Problems</menuitem>
+	{#each viewNames as v}
+		<menuitem class:selected ="{$view==v}" on:click={() => switchView(v)}><img src="images/{viewIcons[viewNames.indexOf(v)]}.png" alt="logo"/>{v}</menuitem>
+	{/each}
 	<menuItem class="right" name="menuUi">{uiLocale}</menuItem>
 </menubar> 
 
