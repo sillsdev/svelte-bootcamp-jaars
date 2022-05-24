@@ -4,7 +4,6 @@
 </script>
 
 <div>
-        <h3>Header</h3>
         <ul>
             {#each navlists as list}
                 <li >

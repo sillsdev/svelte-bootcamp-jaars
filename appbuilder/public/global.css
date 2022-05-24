@@ -1,3 +1,7 @@
+:root {
+	--mdc-typography-font-family: Source Sans Pro, Roboto, sans-serif;
+  }
+
 html, body {
 	position: relative;
 	width: 100%;
