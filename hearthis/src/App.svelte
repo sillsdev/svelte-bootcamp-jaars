@@ -20,7 +20,9 @@
 
 <style>
   main {
-    text-align: center;
+		background-color: black;
+    text-align: left;
+    color: white;
     padding: 1em;
     padding-top: 0;
     max-width: 240px;
