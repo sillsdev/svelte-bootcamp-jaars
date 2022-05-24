@@ -1,0 +1,866 @@
+{
+  "ot": [
+    {
+	  "GEN": [
+		{
+			"en": [
+			{
+				"name": "Genesis",
+				"abbreviation": "Gen"
+			}],
+			"es": [
+			{
+				"name": "Genesis",
+				"abbreviation": "Gén"
+			}]
+		}],
+	  "EXO": [
+		{
+		  "en": [
+			{
+				"name": "Exodus",
+				"abbreviation": "Exo"
+			}],
+		  "es": [
+			{
+				"name": "Exodo",
+				"abbreviation": "Ex"
+			}]
+		}],
+	  "LEV": [
+		{
+		  "en": [
+			{
+				"name": "Leviticus",
+				"abbreviation": "Lev"
+			}],
+		  "es": [
+			{
+				"name": "Levítico",
+				"abbreviation": "Lev"
+			}]
+		}],
+	  "NUM": [
+		{
+		  "en": [
+			{
+				"name": "Numbers",
+				"abbreviation": "Num"
+			}],
+		  "es": [
+			{
+				"name": "Números",
+				"abbreviation": "Núm"
+			}]
+		}],
+	  "DEU": [
+		{
+		  "en": [
+			{
+				"name": "Deuteronomy",
+				"abbreviation": "Deu"
+			}],
+		  "es": [
+			{
+				"name": "Deuteronomio",
+				"abbreviation": "Dt"
+			}]
+		}],
+	  "JOS": [
+		{
+		  "en": [
+			{
+				"name": "Joshua",
+				"abbreviation": "Jos"
+			}],
+		  "es": [
+			{
+				"name": "Josué",
+				"abbreviation": "Jos"
+			}]
+		}],
+	  "JDG": [
+		{
+		  "en": [
+			{
+				"name": "Judges",
+				"abbreviation": "Jdg"
+			}],
+		  "es": [
+			{
+				"name": "Jueces",
+				"abbreviation": "Jue"
+			}]
+		}],
+	  "RUT": [
+		{
+		  "en": [
+			{
+				"name": "Ruth",
+				"abbreviation": "Rut"
+			}],
+		  "es": [
+			{
+				"name": "Rut",
+				"abbreviation": "Rt"
+			}]
+		}],
+	  "1SA": [
+		{
+		  "en": [
+			{
+				"name": "1 Samuel",
+				"abbreviation": "1Sa"
+			}],
+		  "es": [
+			{
+				"name": "1 Samuel",
+				"abbreviation": "1 Sam"
+			}]
+		}],
+	  "2SA": [
+		{
+		  "en": [
+			{
+				"name": "2 Samuel",
+				"abbreviation": "2Sa"
+			}],
+		  "es": [
+			{
+				"name": "2 Samuel",
+				"abbreviation": "2 Sam"
+			}]
+		}],
+	  "1KI": [
+		{
+		  "en": [
+			{
+				"name": "1 Kings",
+				"abbreviation": "1Ki"
+			}],
+		  "es": [
+			{
+				"name": "1 Reyes",
+				"abbreviation": "1 Re"
+			}]
+		}],
+	  "2KI": [
+		{
+		  "en": [
+			{
+				"name": "2 Kings",
+				"abbreviation": "2Ki"
+			}],
+		  "es": [
+			{
+				"name": "2 Reyes",
+				"abbreviation": "2 Re"
+			}]
+		}],
+	  "1CH": [
+		{
+		  "en": [
+			{
+				"name": "1 Chronicles",
+				"abbreviation": "1Ch"
+			}],
+		  "es": [
+			{
+				"name": "1 Crónicas",
+				"abbreviation": "1 Cro"
+			}]
+		}],
+	  "2CH": [
+		{
+		  "en": [
+			{
+				"name": "2 Chronicles",
+				"abbreviation": "2Ch"
+			}],
+		  "es": [
+			{
+				"name": "2 Crónicas",
+				"abbreviation": "2 Cro"
+			}]
+		}],
+	  "EZR": [
+		{
+		  "en": [
+			{
+				"name": "Ezra",
+				"abbreviation": "Ezr"
+			}],
+		  "es": [
+			{
+				"name": "Esdras",
+				"abbreviation": "Esd"
+			}]
+		}],
+	  "NEH": [
+		{
+		  "en": [
+			{
+				"name": "Nehemiah",
+				"abbreviation": "Neh"
+			}],
+		  "es": [
+			{
+				"name": "Nehemías",
+				"abbreviation": "Neh"
+			}]
+		}],
+	  "EST": [
+		{
+		  "en": [
+			{
+				"name": "Esther",
+				"abbreviation": "Est"
+			}],
+		  "es": [
+			{
+				"name": "Ester",
+				"abbreviation": "Est"
+			}]
+		}],
+	  "JOB": [
+		{
+		  "en": [
+			{
+				"name": "Job",
+				"abbreviation": "Job"
+			}],
+		  "es": [
+			{
+				"name": "Job",
+				"abbreviation": "Job"
+			}]
+		}],
+	  "PSA": [
+		{
+		  "en": [
+			{
+				"name": "Psalms",
+				"abbreviation": "Psa"
+			}],
+		  "es": [
+			{
+				"name": "Salmos",
+				"abbreviation": "Sal"
+			}]
+		}],
+	  "PRO": [
+		{
+		  "en": [
+			{
+				"name": "Proverbs",
+				"abbreviation": "Pro"
+			}],
+		  "es": [
+			{
+				"name": "Proverbios",
+				"abbreviation": "Prov"
+			}]
+		}],
+	  "ECC": [
+		{
+		  "en": [
+			{
+				"name": "Ecclesiastes",
+				"abbreviation": "Ecc"
+			}],
+		  "es": [
+			{
+				"name": "Eclesiastés",
+				"abbreviation": "Ecl"
+			}]
+		}],
+	  "SNG": [
+		{
+		  "en": [
+			{
+				"name": "Song of Solomon",
+				"abbreviation": "Sng"
+			}],
+		  "es": [
+			{
+				"name": "Cantares",
+				"abbreviation": "Cant"
+			}]
+		}],
+	  "ISA": [
+		{
+		  "en": [
+			{
+				"name": "Isaiah",
+				"abbreviation": "Isa"
+			}],
+		  "es": [
+			{
+				"name": "Isaías",
+				"abbreviation": "Is"
+			}]
+		}],
+	  "JER": [
+		{
+		  "en": [
+			{
+				"name": "Jeremiah",
+				"abbreviation": "Jer"
+			}],
+		  "es": [
+			{
+				"name": "Jeremías",
+				"abbreviation": "Jer"
+			}]
+		}],
+	  "LAM": [
+		{
+		  "en": [
+			{
+				"name": "Lamentations",
+				"abbreviation": "Lam"
+			}],
+		  "es": [
+			{
+				"name": "Lamentaciones",
+				"abbreviation": "Lam"
+			}]
+		}],
+	  "EZK": [
+		{
+		  "en": [
+			{
+				"name": "Ezekiel",
+				"abbreviation": "Ezk"
+			}],
+		  "es": [
+			{
+				"name": "Ezequiel",
+				"abbreviation": "Ez"
+			}]
+		}],
+	  "DAN": [
+		{
+		  "en": [
+			{
+				"name": "Daniel",
+				"abbreviation": "Dan"
+			}],
+		  "es": [
+			{
+				"name": "Daniel",
+				"abbreviation": "Dan"
+			}]
+		}],
+	  "HOS": [
+		{
+		  "en": [
+			{
+				"name": "Hosea",
+				"abbreviation": "Hos"
+			}],
+		  "es": [
+			{
+				"name": "Oseas",
+				"abbreviation": "Os"
+			}]
+		}],
+	  "JOL": [
+		{
+		  "en": [
+			{
+				"name": "Joel",
+				"abbreviation": "Jol"
+			}],
+		  "es": [
+			{
+				"name": "Joel",
+				"abbreviation": "Jl"
+			}]
+		}],
+	  "AMO": [
+		{
+		  "en": [
+			{
+				"name": "Amos",
+				"abbreviation": "Amo"
+			}],
+		  "es": [
+			{
+				"name": "Amós",
+				"abbreviation": "Am"
+			}]
+		}],
+	  "OBA": [
+		{
+		  "en": [
+			{
+				"name": "Obadiah",
+				"abbreviation": "Oba"
+			}],
+		  "es": [
+			{
+				"name": "Abdías",
+				"abbreviation": "Abd"
+			}]
+		}],
+	  "JON": [
+		{
+		  "en": [
+			{
+				"name": "Jonah",
+				"abbreviation": "Jon"
+			}],
+		  "es": [
+			{
+				"name": "Jonás",
+				"abbreviation": "Jon"
+			}]
+		}],
+	  "MIC": [
+		{
+		  "en": [
+			{
+				"name": "Micah",
+				"abbreviation": "Mic"
+			}],
+		  "es": [
+			{
+				"name": "Miqueas",
+				"abbreviation": "Miq"
+			}]
+		}],
+	  "NAM": [
+		{
+		  "en": [
+			{
+				"name": "Nahum",
+				"abbreviation": "Nah"
+			}],
+		  "es": [
+			{
+				"name": "Nahúm",
+				"abbreviation": "Nah"
+			}]
+		}],
+	  "HAB": [
+		{
+		  "en": [
+			{
+				"name": "Habakkuk",
+				"abbreviation": "Hab"
+			}],
+		  "es": [
+			{
+				"name": "Habacuc",
+				"abbreviation": "Hab"
+			}]
+		}],
+	  "ZEP": [
+		{
+		  "en": [
+			{
+				"name": "Zephaniah",
+				"abbreviation": "Zep"
+			}],
+		  "es": [
+			{
+				"name": "Sofonías",
+				"abbreviation": "Sof"
+			}]
+		}],
+	  "HAG": [
+		{
+		  "en": [
+			{
+				"name": "Haggai",
+				"abbreviation": "Hag"
+			}],
+		  "es": [
+			{
+				"name": "Hageo",
+				"abbreviation": "Hag"
+			}]
+		}],
+	  "ZEC": [
+		{
+		  "en": [
+			{
+				"name": "Zechariah",
+				"abbreviation": "Zec"
+			}],
+		  "es": [
+			{
+				"name": "Zacarías",
+				"abbreviation": "Zac"
+			}]
+		}],
+	  "MAL": [
+		{
+		  "en": [
+			{
+				"name": "Malachi",
+				"abbreviation": "Mal"
+			}],
+		  "es": [
+			{
+				"name": "Malaquías",
+				"abbreviation": "Mal"
+			}]
+		}]
+	}],
+  "nt": [
+    {
+	  "MAT": [
+		{
+			"en": [
+			{
+				"name": "Matthew",
+				"abbreviation": "Mat"
+			}],
+			"es": [
+			{
+				"name": "Mateo",
+				"abbreviation": "Mt"
+			}]
+		}],
+	  "MRK": [
+		{
+		  "en": [
+			{
+				"name": "Mark",
+				"abbreviation": "Mrk"
+			}],
+		  "es": [
+			{
+				"name": "Marcos",
+				"abbreviation": "Mc"
+			}]
+		}],
+	  "LUK": [
+		{
+		  "en": [
+			{
+				"name": "Luke",
+				"abbreviation": "Luk"
+			}],
+		  "es": [
+			{
+				"name": "Lucas",
+				"abbreviation": "Lc"
+			}]
+		}],
+	  "JHN": [
+		{
+		  "en": [
+			{
+				"name": "John",
+				"abbreviation": "Jhn"
+			}],
+		  "es": [
+			{
+				"name": "Juan",
+				"abbreviation": "Jn"
+			}]
+		}],
+	  "ACT": [
+		{
+		  "en": [
+			{
+				"name": "Acts",
+				"abbreviation": "Act"
+			}],
+		  "es": [
+			{
+				"name": "Hechos",
+				"abbreviation": "Hch"
+			}]
+		}],
+	  "ROM": [
+		{
+		  "en": [
+			{
+				"name": "Romans",
+				"abbreviation": "Rom"
+			}],
+		  "es": [
+			{
+				"name": "Romanos",
+				"abbreviation": "Rom"
+			}]
+		}],
+	  "1CO": [
+		{
+		  "en": [
+			{
+				"name": "1 Corinthians",
+				"abbreviation": "1Cor"
+			}],
+		  "es": [
+			{
+				"name": "1 Corintios",
+				"abbreviation": "1 Cor"
+			}]
+		}],
+	  "2CO": [
+		{
+		  "en": [
+			{
+				"name": "2 Corinthians",
+				"abbreviation": "2Cor"
+			}],
+		  "es": [
+			{
+				"name": "2 Corintios",
+				"abbreviation": "2 Cor"
+			}]
+		}],
+	  "GAL": [
+		{
+		  "en": [
+			{
+				"name": "Galatians",
+				"abbreviation": "Gal"
+			}],
+		  "es": [
+			{
+				"name": "Gálatas",
+				"abbreviation": "Gál"
+			}]
+		}],
+	  "EPH": [
+		{
+		  "en": [
+			{
+				"name": "Ephesians",
+				"abbreviation": "Eph"
+			}],
+		  "es": [
+			{
+				"name": "Efesios",
+				"abbreviation": "Ef"
+			}]
+		}],
+	  "PHP": [
+		{
+		  "en": [
+			{
+				"name": "Philippians",
+				"abbreviation": "Php"
+			}],
+		  "es": [
+			{
+				"name": "Filipenses",
+				"abbreviation": "Flp"
+			}]
+		}],
+	  "COL": [
+		{
+		  "en": [
+			{
+				"name": "Colossians",
+				"abbreviation": "Col"
+			}],
+		  "es": [
+			{
+				"name": "Colosenses",
+				"abbreviation": "Col"
+			}]
+		}],
+	  "1TH": [
+		{
+		  "en": [
+			{
+				"name": "1 Thessalonians",
+				"abbreviation": "1Th"
+			}],
+		  "es": [
+			{
+				"name": "1 Tesalonicenses",
+				"abbreviation": "1 Tes"
+			}]
+		}],
+	  "2TH": [
+		{
+		  "en": [
+			{
+				"name": "2 Thessalonians",
+				"abbreviation": "2Th"
+			}],
+		  "es": [
+			{
+				"name": "2 Tesalonicenses",
+				"abbreviation": "2 Tes"
+			}]
+		}],
+	  "1TI": [
+		{
+		  "en": [
+			{
+				"name": "1 Timothy",
+				"abbreviation": "1Tim"
+			}],
+		  "es": [
+			{
+				"name": "1 Timoteo",
+				"abbreviation": "1 Tim"
+			}]
+		}],
+	  "2TI": [
+		{
+		  "en": [
+			{
+				"name": "2 Timothy",
+				"abbreviation": "2Tim"
+			}],
+		  "es": [
+			{
+				"name": "2 Timoteo",
+				"abbreviation": "2 Tim"
+			}]
+		}],
+	  "TIT": [
+		{
+		  "en": [
+			{
+				"name": "Titus",
+				"abbreviation": "Tit"
+			}],
+		  "es": [
+			{
+				"name": "Tito",
+				"abbreviation": "Tit"
+			}]
+		}],
+	  "PHM": [
+		{
+		  "en": [
+			{
+				"name": "Philemon",
+				"abbreviation": "Phm"
+			}],
+		  "es": [
+			{
+				"name": "Filemón",
+				"abbreviation": "Flm"
+			}]
+		}],
+	  "HEB": [
+		{
+		  "en": [
+			{
+				"name": "Hebrews",
+				"abbreviation": "Heb"
+			}],
+		  "es": [
+			{
+				"name": "Hebreos",
+				"abbreviation": "Heb"
+			}]
+		}],
+	  "JAS": [
+		{
+		  "en": [
+			{
+				"name": "James",
+				"abbreviation": "Jas"
+			}],
+		  "es": [
+			{
+				"name": "Santiago",
+				"abbreviation": "Sant"
+			}]
+		}],
+	  "1PE": [
+		{
+		  "en": [
+			{
+				"name": "1 Peter",
+				"abbreviation": "1Pet"
+			}],
+		  "es": [
+			{
+				"name": "1 Pedro",
+				"abbreviation": "1 Pe"
+			}]
+		}],
+	  "2PE": [
+		{
+		  "en": [
+			{
+				"name": "2 Peter",
+				"abbreviation": "2Pet"
+			}],
+		  "es": [
+			{
+				"name": "2 Pedro",
+				"abbreviation": "2 Pe"
+			}]
+		}],
+	  "1JN": [
+		{
+		  "en": [
+			{
+				"name": "1 John",
+				"abbreviation": "1Jn"
+			}],
+		  "es": [
+			{
+				"name": "1 Juan",
+				"abbreviation": "1 Jn"
+			}]
+		}],
+	  "2JN": [
+		{
+		  "en": [
+			{
+				"name": "2 John",
+				"abbreviation": "2Jn"
+			}],
+		  "es": [
+			{
+				"name": "2 Juan",
+				"abbreviation": "2 Jn"
+			}]
+		}],
+	  "3JN": [
+		{
+		  "en": [
+			{
+				"name": "3 John",
+				"abbreviation": "3Jn"
+			}],
+		  "es": [
+			{
+				"name": "3 Juan",
+				"abbreviation": "3 Jn"
+			}]
+		}],
+	  "JUD": [
+		{
+		  "en": [
+			{
+				"name": "Jude",
+				"abbreviation": "Jud"
+			}],
+		  "es": [
+			{
+				"name": "Judas",
+				"abbreviation": "Jds"
+			}]
+		}],
+	  "REV": [
+		{
+		  "en": [
+			{
+				"name": "Revelation",
+				"abbreviation": "Rev"
+			}],
+		  "es": [
+			{
+				"name": "Apocalipsis",
+				"abbreviation": "Ap"
+			}]
+		}]
+	}]
+}
