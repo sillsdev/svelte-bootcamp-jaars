@@ -1,22 +1,42 @@
 <script lang="ts">
   import Navbar from "./Navbar.svelte";
-  import Router from "svelte-spa-router";
+  import Router, { params } from "svelte-spa-router";
   import routes from "./routes";
+  import { projects } from "./stores";
+  import { onMount } from "svelte";
 
-  let Pages = [
-    { url: "/", label: "Project" },
-    { url: "/#/record", label: "Record" },
-    { url: "/#/check", label: "Check" },
-    { url: "/#/settings", label: "Settings" },
-    { url: "/#/publish", label: "Publish" },
-  ];
+  onMount(async () => {
+    // const endpoint = "TODO raw github url";
+    // const response = await fetch(endpoint);
+    // $projects = await response.json();
+    $projects = [
+      {
+        id: "es",
+        name: "Spanish",
+      },
+      {
+        id: "en",
+        name: "English",
+      },
+      {
+        id: "th",
+        name: "Thai",
+      },
+    ];
+  });
 </script>
 
-<Navbar navlists={Pages} />
+<Navbar />
 
 <main>
   <Router {routes} />
 </main>
+
+<footer>
+  {#if $params}
+    URL variables: <pre>{JSON.stringify($params)}</pre>
+  {/if}
+</footer>
 
 <style>
   main {
