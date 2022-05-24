@@ -15,15 +15,15 @@
     let hasContent = true;
 </script>
 
-<body>
+<div>
     {#each books as book }
     <NavigationButton selected={book === selectedBook} type="book" label={book} {hasContent} on:bookSelected={handleBookSelected}/>
         
     {/each}
-</body>
+</div>
 
 <style>
-	body {
+	div {
 		padding: 10px;
 		margin: 10px auto;
 		white-space:nowrap;
