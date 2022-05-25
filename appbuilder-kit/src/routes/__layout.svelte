@@ -4,7 +4,7 @@
     <a href="/history">History</a>
     <a href="/highlights">Highlights</a>
     <a href="/notes">Notes</a>
-    <a href="/bookmarks">Boorkmarks</a>
-  </nav>
-  
-  <slot></slot>
+    <a href="/bookmarks">Bookmarks</a>
+</nav>
+ 
+<slot></slot>

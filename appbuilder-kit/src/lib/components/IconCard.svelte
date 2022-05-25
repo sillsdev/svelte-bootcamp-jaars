@@ -3,11 +3,15 @@
     export let text = "";
     export let date = "";
     export let actions = [""];
+    export let src = "";
+    export let alt = "";
     let showMenu = false;
 </script>
 
 <div class="annotation-item-block">
-    <slot name="icon"></slot>
+    <div class="annotation-item-icon annotation-float-left">
+        <span><img {src} {alt}></span>
+    </div>
     <!--Menu-->
     <div class="annotation-item-menu annotation-float-right">
         <span on:click={() => showMenu = !showMenu} class="dropbtn">

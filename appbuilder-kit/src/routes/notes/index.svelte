@@ -1,17 +1,21 @@
 <script>
-    import NoteCard from '$lib/components/NoteCard.svelte';
+    import IconCard from '$lib/components/IconCard.svelte';
     let notes = [
         {
             reference:"John 1:9",
             text:"He is the light",
             date:"23 May 2022",
             actions:["View","Edit","Share","Delete"],
+            src:"ic_note_24_black.png",
+            alt:"text bubble",
         },   
         {
             reference:"John 1:1",
             text:"Similar to Genesis 1:1",
             date:"23 May 2022",
             actions:["View","Edit","Share","Delete"],
+            src:"ic_note_24_black.png",
+            alt:"text bubble",
         },];   
 </script>
 
@@ -19,11 +23,7 @@
 
 <body class="annotations">
     {#each notes as n}
-        <NoteCard {...n}>
-            <div slot="icon" class="annotation-item-icon annotation-float-left">
-                <span><img src="ic_note_24_black.png" alt="text bubble"></span>
-            </div>
-        </NoteCard>
+        <IconCard {...n} />
     {/each}
 
     <!--Original-->
