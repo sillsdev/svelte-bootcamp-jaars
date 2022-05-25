@@ -1,23 +1,33 @@
 <script>
+    import NoteCard from '$lib/components/NoteCard.svelte';
     let notes = [
         {
-            reference:"",
-            text:"",
-            date:"",
-            actions:[""],
-        },
+            reference:"John 1:9",
+            text:"He is the light",
+            date:"23 May 2022",
+            actions:["View","Edit","Share","Delete"],
+        },   
         {
-            reference:"",
-            text:"",
-            date:"",
-            actions:[""],
-        },];
+            reference:"John 1:1",
+            text:"Similar to Genesis 1:1",
+            date:"23 May 2022",
+            actions:["View","Edit","Share","Delete"],
+        },];   
 </script>
 
 <h1>Notes</h1>
 
 <body class="annotations">
-    <div id="0" class="annotation-item-block">
+    {#each notes as n}
+        <NoteCard {...n}>
+            <div slot="icon" class="annotation-item-icon annotation-float-left">
+                <span><img src="ic_note_24_black.png" alt="text bubble"></span>
+            </div>
+        </NoteCard>
+    {/each}
+
+    <!--Original-->
+    <!--<div id="0" class="annotation-item-block">
         <div class="annotation-item-icon annotation-float-left">
             <span><img src="ic_note_24_black.png" alt="text bubble"></span>
         </div>
@@ -115,5 +125,5 @@
         function hideAnnotation(id) {
             document.getElementById(id).className = document.getElementById(id).className + ' hidden';
         }
-    </script>
+    </script>-->
 </body>

@@ -15,7 +15,8 @@
         </span>
         <div class="dropdown-content {showMenu? "show":"hidden"}">
             {#each actions as a}
-                <span>{a}</span>
+            <!-- svelte-ignore a11y-missing-attribute-->
+                <a>{a}</a>
             {/each}
             <!--Orignal menu. Handle actual actions later-->
             <!--<a href="I-0">View</a>

@@ -1,9 +1,35 @@
+<script>
+    import NoteCard from '$lib/components/NoteCard.svelte';
+    let highlights = [
+        {
+            reference:"John 1:9",
+            text:"He is the light",
+            date:"23 May 2022",
+            actions:["View","Share","Delete"],
+            highlight_color:"1",
+        },   
+        {
+            reference:"John 1:1",
+            text:"Similar to Genesis 1:1",
+            date:"23 May 2022",
+            actions:["View","Share","Delete"],
+            highlight_color:"2",
+        },];  
+</script>
+
+
 <h1>Highlights</h1>
 
 <body class="annotations">
-    <div id="0" class="annotation-item-block">
-        <div class="annotation-item-color hlp1 annotation-float-left">
-        </div>
+    {#each highlights as h}
+        <NoteCard {...h}>
+            <div slot="icon" class="annotation-item-color {"hlp"+h.highlight_color} annotation-float-left"></div>
+        </NoteCard>
+    {/each}
+    
+    <!--Original HTML-->
+    <!--<div id="0" class="annotation-item-block">
+        <div class="annotation-item-color hlp1 annotation-float-left"></div>
         <div class="annotation-item-menu annotation-float-right">
             <span onclick="onShowDropdownMenu('0')" class="dropbtn"><img class="dropbtn-image" src="ic_dots_vertical_24_black.png" alt="vertical dots"></span>
             <div id="menu-0" class="dropdown-content">
@@ -25,8 +51,7 @@
         </div>
     </div>
     <div id="1" class="annotation-item-block">
-        <div class="annotation-item-color hlp2 annotation-float-left">
-        </div>
+        <div class="annotation-item-color hlp2 annotation-float-left"></div>
         <div class="annotation-item-menu annotation-float-right">
             <span onclick="onShowDropdownMenu('1')" class="dropbtn"><img class="dropbtn-image" src="ic_dots_vertical_24_black.png" alt="vertical dots"></span>
             <div id="menu-1" class="dropdown-content">
@@ -94,5 +119,5 @@
         function hideAnnotation(id) {
             document.getElementById(id).className = document.getElementById(id).className + ' hidden';
         }
-    </script>
+    </script>-->
 </body>   
