@@ -1,6 +1,6 @@
 <script>
   import { location, link } from "svelte-spa-router";
-  import { projects } from "./stores.js";
+  import { projects } from "./stores";
   $: project = $projects.find((p) => p.id === $location.split("/")[1]);
   $: projectName = project ? project.name + " Project" : "";
 
@@ -20,7 +20,7 @@
       {#each pages as page}
         <li>
           <!-- svelte-ignore a11y-missing-attribute -->
-          <a use:link={`/${project.id}/${page.url}`}>{page.label}</a>
+          <a use:link href={`/${project.id}/${page.url}`}>{page.label}</a>
         </li>
       {/each}
     {/if}

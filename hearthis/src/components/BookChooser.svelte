@@ -1,29 +1,31 @@
 <script lang="ts">
 	import NavigationButton from './NavigationButton.svelte'
 
-	export let currentBook: string = "GEN";
-	export let name: string;
-	export let version: string;
+    import { location, push } from "svelte-spa-router";
+
+	import { changeUrlPart } from './utils.js'
+
+	function handleBookSelected(event) {
+		changeUrlPart(3, event.detail.book);
+	}
+
+	export let selectedBook: string;
+
+    let books = ["GEN", "EXO", "LEV", "NUM", "DEU"];
+    let hasContent = true;
 </script>
 
-<body>
-    <NavigationButton label="GEN" hasContent={true} on:clicked="{() => currentBook = "GEN"}"/>
-    <NavigationButton label="EXO" hasContent={true}/>
-    <NavigationButton label="LEV" hasContent={true}/>
-    <NavigationButton label="NUM" hasContent={false}/>
-    <NavigationButton label="DEU" hasContent={true}/>
-</body>
+<div>
+    {#each books as book }
+    <NavigationButton selected={book === selectedBook} type="book" label={book} {hasContent} on:bookSelected={handleBookSelected}/>
+        
+    {/each}
+</div>
 
 <style>
-	body {
+	div {
 		padding: 10px;
 		margin: 10px auto;
 		white-space:nowrap;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
 	}
 </style>

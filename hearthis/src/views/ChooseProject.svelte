@@ -1,6 +1,6 @@
 <script lang="ts">
   import { link } from "svelte-spa-router";
-  import { projects } from "../stores.js";
+  import { projects } from "../stores";
 </script>
 
 <h1>Choose a Project</h1>

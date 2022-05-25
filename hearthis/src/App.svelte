@@ -2,7 +2,7 @@
   import Navbar from "./Navbar.svelte";
   import Router, { params } from "svelte-spa-router";
   import routes from "./routes";
-  import { projects } from "./stores";
+  import { projects } from "./stores.js";
   import { onMount } from "svelte";
 
   onMount(async () => {
