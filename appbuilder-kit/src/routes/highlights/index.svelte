@@ -2,19 +2,19 @@
     import NoteCard from '$lib/components/NoteCard.svelte';
     let highlights = [
         {
-            reference:"John 1:9",
-            text:"He is the light",
-            date:"23 May 2022",
+            reference:"John 1:7",
+            text:"The same came as a witness, that he might testify about the light, that all might believe through him.",
+            date:"24 May 2022",
             actions:["View","Share","Delete"],
             highlight_color:"1",
-        },   
+        },
         {
-            reference:"John 1:1",
-            text:"Similar to Genesis 1:1",
-            date:"23 May 2022",
+            reference:"John 1:3",
+            text:"All things were made through him. Without him, nothing was made that has been made.",
+            date:"22 May 2022",
             actions:["View","Share","Delete"],
             highlight_color:"2",
-        },];  
+        },];           
 </script>
 
 
