@@ -3,7 +3,7 @@
         <div class="annotation-item-color hlp1 annotation-float-left">
         </div>
         <div class="annotation-item-menu annotation-float-right">
-            <span onclick="onShowDropdownMenu('0')" class="dropbtn"><img class="dropbtn-image" src="ic_dots_vertical_24_black.png"></span>
+            <span onclick="onShowDropdownMenu('0')" class="dropbtn"><img class="dropbtn-image" src="../../public/ic_dots_vertical_24_black.png" alt="vertical dots"></span>
             <div id="menu-0" class="dropdown-content">
                 <a href="I-0">View</a>
                 <a href="S-0">Share</a>
@@ -26,7 +26,7 @@
         <div class="annotation-item-color hlp2 annotation-float-left">
         </div>
         <div class="annotation-item-menu annotation-float-right">
-            <span onclick="onShowDropdownMenu('1')" class="dropbtn"><img class="dropbtn-image" src="ic_dots_vertical_24_black.png"></span>
+            <span onclick="onShowDropdownMenu('1')" class="dropbtn"><img class="dropbtn-image" src="../../public/ic_dots_vertical_24_black.png" alt="vertical dots"></span>
             <div id="menu-1" class="dropdown-content">
                 <a href="I-1">View</a>
                 <a href="S-1">Share</a>
