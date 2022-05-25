@@ -1,5 +1,5 @@
 <script>
-    import NoteCard from '$lib/components/NoteCard.svelte';
+    import ColorCard from '$lib/components/ColorCard.svelte';
     let highlights = [
         {
             reference:"John 1:7",
@@ -22,9 +22,7 @@
 
 <body class="annotations">
     {#each highlights as h}
-        <NoteCard {...h}>
-            <div slot="icon" class="annotation-item-color {"hlp"+h.highlight_color} annotation-float-left"></div>
-        </NoteCard>
+        <ColorCard {...h} />
     {/each}
     
     <!--Original HTML-->
