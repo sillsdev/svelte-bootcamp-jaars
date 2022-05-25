@@ -1,3 +1,19 @@
+<script>
+    let notes = [
+        {
+            reference:"",
+            text:"",
+            date:"",
+            actions:[""],
+        },
+        {
+            reference:"",
+            text:"",
+            date:"",
+            actions:[""],
+        },];
+</script>
+
 <h1>Notes</h1>
 
 <body class="annotations">
@@ -50,7 +66,9 @@
         <div class="annotation-item-date annotation-align-right">
             23 May 2022
         </div>
+    
     </div>
+    
     <script>
         function onClickItem(e) {
             var target = e.target;
