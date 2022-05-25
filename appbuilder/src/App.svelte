@@ -9,7 +9,7 @@
 		{ url: "/#/search", label: "Search"},
 		{ url: "/#/settings", label: "Settings"},
 		{ url: "/#/notes", label: "Notes"},
-
+		{ url: "/#/highlights", label: "Highlights"},
 	]
 </script>
 
