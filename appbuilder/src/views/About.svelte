@@ -15,6 +15,7 @@ let promise = getAboutText();
 </script>
 
 <h1>About</h1>
+<body class="about">
 
  {#await promise}
     <p>Loading data</p>
@@ -24,7 +25,7 @@ let promise = getAboutText();
     <p style="color: red">{error.message}</p>
  {/await}
 
- 
+ </body>
 <style>
 
 
