@@ -1,11 +1,11 @@
 <script>
+    import CardMenu from './CardMenu.svelte';
     export let reference = "";
     export let text = "";
     export let date = "";
     export let actions = [""];
     export let src = "";
     export let alt = "";
-    let showMenu = false;
 </script>
 
 <div class="annotation-item-block">
@@ -13,22 +13,7 @@
         <span><img {src} {alt}></span>
     </div>
     <!--Menu-->
-    <div class="annotation-item-menu annotation-float-right">
-        <span on:click={() => showMenu = !showMenu} class="dropbtn">
-            <img class="dropbtn-image" src="ic_dots_vertical_24_black.png" alt="vertical dots">
-        </span>
-        <div class="dropdown-content {showMenu? "show":"hidden"}">
-            {#each actions as a}
-            <!-- svelte-ignore a11y-missing-attribute-->
-                <a>{a}</a>
-            {/each}
-            <!--Orignal menu. Handle actual actions later-->
-            <!--<a href="I-0">View</a>
-            <a href="E-0">Edit</a>
-            <a href="S-0">Share</a>
-            <a href="D-0">Delete</a>-->
-        </div>
-    </div>
+    <CardMenu actions={actions}/>
     <!--Content-->
     <div class="annotation-item-content-block">
         <div class="annotation-item-reference annotation-item-reference-bcC01 annotation-item-reference-bcC01-bkJHN">{reference}</div>
