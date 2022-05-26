@@ -13,7 +13,7 @@
         <span><img {src} {alt}></span>
     </div>
     <!--Menu-->
-    <CardMenu actions={actions}/>
+    <CardMenu on:menuaction actions={actions}/>
     <!--Content-->
     <div class="annotation-item-content-block">
         <div class="annotation-item-reference annotation-item-reference-bcC01 annotation-item-reference-bcC01-bkJHN">{reference}</div>
