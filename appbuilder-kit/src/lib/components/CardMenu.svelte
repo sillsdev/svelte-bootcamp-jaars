@@ -1,19 +1,10 @@
-<script context="module">
-    const elements = new Set();
-
-    export function closeAll() {
-        elements.forEach(element => {
-            element.showMenu = false;
-        });
-    }
-</script>
-
 <script>
+    import { clickOutside } from '$lib/scripts/click_outside.js';
     export let actions = [""];
     let showMenu = false;
 </script>
 
-<div class="annotation-item-menu annotation-float-right">
+<div  use:clickOutside on:outclick={() => showMenu = false} class="annotation-item-menu annotation-float-right">
     <span on:click={() => showMenu = !showMenu} class="dropbtn">
         <img class="dropbtn-image" src="ic_dots_vertical_24_black.png" alt="vertical dots">
     </span>
