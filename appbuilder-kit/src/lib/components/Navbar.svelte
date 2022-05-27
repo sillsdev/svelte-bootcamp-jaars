@@ -1,11 +1,13 @@
 <script>
     import Dropdown from "./Dropdown.svelte";
+    import SelectGrid from "./SelectGrid.svelte";
     import HamburgerIcon from "$lib/icons/HamburgerIcon.svelte";
     import MuteIcon from "$lib/icons/MuteIcon.svelte";
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
     export let book = "";
     export let chapter = "";
+    let chapters = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 </script>
 
 <div class="navbar bg-base-100">
@@ -22,6 +24,7 @@
             <svelte:fragment slot="label">
                 {chapter} <DropdownIcon/>
             </svelte:fragment>
+            <SelectGrid slot="content" options={chapters}/>
         </Dropdown>
     </div>
     <div class="navbar-end fill-base-content">
