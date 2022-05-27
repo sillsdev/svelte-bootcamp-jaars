@@ -7,7 +7,7 @@
             text:"He is the light",
             date:"23 May 2022",
             actions:["View","Edit","Share","Delete"],
-            src:"ic_note_24_black.png",
+            src:"icons/ic_note_black_24dp.png",
             alt:"text bubble",
         },   
         {
@@ -16,10 +16,10 @@
             text:"Similar to Genesis 1:1",
             date:"23 May 2022",
             actions:["View","Edit","Share","Delete"],
-            src:"ic_note_24_black.png",
+            src:"icons/ic_note_black_24dp.png",
             alt:"text bubble",
         },];
-        function handleMenuaction(event, id) {
+    function handleMenuaction(event, id) {
         console.log(event.detail.text+"-"+id);
     }
 </script>
