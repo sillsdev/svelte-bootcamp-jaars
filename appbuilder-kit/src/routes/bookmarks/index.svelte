@@ -7,7 +7,7 @@
             text:"The light shines in the darkness and the darkness hasn't overcome it.",
             date:"22 May 2022",
             actions:["View","Share","Delete"],
-            src:"ic_bookmark_24_red.png",
+            src:"icons/ic_bookmark_24_red.png",
             alt:"red bookmark",
         },   
         {
@@ -16,7 +16,7 @@
             text:"In the beginning was the Word, and the Word was with God, and the Word was God.",
             date:"21 May 2022",
             actions:["View","Share","Delete"],
-            src:"ic_bookmark_24_red.png",
+            src:"icons/ic_bookmark_24_red.png",
             alt:"red bookmark",
         },];
     function handleMenuaction(event, id) {

@@ -14,7 +14,7 @@
 
 <div use:clickOutside on:outclick={() => showMenu = false} class="annotation-item-menu annotation-float-right">
     <span on:click={() => showMenu = !showMenu} class="dropbtn">
-        <img class="dropbtn-image" src="ic_dots_vertical_24_black.png" alt="vertical dots">
+        <img class="dropbtn-image" src="icons/ic_more_vert_black_24dp.png" alt="vertical dots">
     </span>
     <div class="dropdown-content {showMenu? "show":"hidden"}">
         {#each actions as a}
