@@ -1,4 +1,5 @@
 <script>
+    import Dropdown from "./Dropdown.svelte";
     import HamburgerIcon from "$lib/icons/HamburgerIcon.svelte";
     import MuteIcon from "$lib/icons/MuteIcon.svelte";
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
@@ -12,22 +13,16 @@
         <div class="btn btn-ghost p-1">
             <HamburgerIcon/>
         </div>
-        <div class="dropdown">
-            <label tabindex="0" class="btn btn-ghost p-0.5 no-animation">
+        <Dropdown>
+            <svelte:fragment slot="label">
                 {book} <DropdownIcon/>
-            </label>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                
-            </ul>
-        </div>
-        <div class="dropdown">
-            <label tabindex="0" class="btn btn-ghost p-0.5 no-animation">
+            </svelte:fragment>
+        </Dropdown>
+        <Dropdown>
+            <svelte:fragment slot="label">
                 {chapter} <DropdownIcon/>
-            </label>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-            
-            </ul>
-        </div>
+            </svelte:fragment>
+        </Dropdown>
     </div>
     <div class="navbar-end fill-base-content">
         <button class="btn btn-ghost btn-circle">
@@ -36,8 +31,10 @@
         <button class="btn btn-ghost btn-circle">
             <SearchIcon/>
         </button>
-        <button class="btn btn-ghost btn-circle">
-            <img class="w-5 h-5" src="icons/ic_action_font_bigger_black.png" alt="hamburger menu"/>
-        </button>
+        <Dropdown>
+            <svelte:fragment slot="label">
+                <img class="w-5 h-5" src="icons/ic_action_font_bigger_black.png" alt="hamburger menu"/>
+            </svelte:fragment>
+        </Dropdown>
     </div>
 </div>
