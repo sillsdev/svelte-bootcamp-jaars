@@ -5,6 +5,7 @@
     import MuteIcon from "$lib/icons/MuteIcon.svelte";
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
+    import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
     export let book = "";
     export let chapter = "";
     let chapters = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
@@ -36,7 +37,7 @@
         </button>
         <Dropdown>
             <svelte:fragment slot="label">
-                <img class="w-5 h-5" src="icons/ic_action_font_bigger_black.png" alt="hamburger menu"/>
+                <TextAppearanceIcon/>
             </svelte:fragment>
         </Dropdown>
     </div>
