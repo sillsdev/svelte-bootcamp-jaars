@@ -7,6 +7,7 @@ module.exports = {
   //daisyui: https://daisyui.com/docs/use/
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
+    prefix: "dy-",
     themes: ["light"],
   },
 };
