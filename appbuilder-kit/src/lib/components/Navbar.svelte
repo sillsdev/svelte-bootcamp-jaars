@@ -1,7 +1,6 @@
 <script>
     import Dropdown from "./Dropdown.svelte";
     import SelectGrid from "./SelectGrid.svelte";
-    import HamburgerIcon from "$lib/icons/HamburgerIcon.svelte";
     import MuteIcon from "$lib/icons/MuteIcon.svelte";
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
@@ -13,9 +12,7 @@
 
 <div class="dy-navbar bg-base-100">
     <div class="dy-navbar-start">
-        <div class="dy-btn dy-btn-ghost p-1">
-            <HamburgerIcon/>
-        </div>
+        <slot name="drawer-button"/>
         <Dropdown>
             <svelte:fragment slot="label">
                 {book} <DropdownIcon/>
