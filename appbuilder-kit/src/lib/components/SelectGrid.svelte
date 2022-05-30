@@ -9,7 +9,7 @@
         <tr>
             {#each Array(cols) as _, ci}
                 {#if ri*cols + ci < options.length}
-                    <td><span class="content btn btn-square btn-ghost p-0 m-0">{options[ri*cols + ci]}</span></td>
+                    <td><span class="dy-btn dy-btn-square dy-btn-ghost p-0 m-0">{options[ri*cols + ci]}</span></td>
                 {/if}
             {/each}
         </tr>

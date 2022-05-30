@@ -11,9 +11,9 @@
     let chapters = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
 </script>
 
-<div class="navbar bg-base-100">
-    <div class="navbar-start">
-        <div class="btn btn-ghost p-1">
+<div class="dy-navbar bg-base-100">
+    <div class="dy-navbar-start">
+        <div class="dy-btn dy-btn-ghost p-1">
             <HamburgerIcon/>
         </div>
         <Dropdown>
@@ -28,11 +28,11 @@
             <SelectGrid slot="content" options={chapters}/>
         </Dropdown>
     </div>
-    <div class="navbar-end fill-base-content">
-        <button class="btn btn-ghost btn-circle">
+    <div class="dy-navbar-end fill-base-content">
+        <button class="dy-btn dy-btn-ghost dy-btn-circle">
             <MuteIcon/>
         </button>
-        <button class="btn btn-ghost btn-circle">
+        <button class="dy-btn dy-btn-ghost dy-btn-circle">
             <SearchIcon/>
         </button>
         <Dropdown>
