@@ -14,8 +14,8 @@
                 <HamburgerIcon/>
             </label>
         </Navbar>
-        <main class="p-2 flex-grow bg-gray-200">
-            <div class="container mx-auto "><slot></slot></div>
+        <main class="p-2 flex-grow bg-gray-200 container mx-auto ">
+            <slot></slot>
         </main>
     </div>
 </Sidebar>
