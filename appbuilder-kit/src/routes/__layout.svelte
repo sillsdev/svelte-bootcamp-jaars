@@ -7,7 +7,7 @@
 
 <div class="dy-drawer dy-drawer-mobile">
     <input id="my-drawer" type="checkbox" class="dy-drawer-toggle" />
-    <div class="dy-drawer-content"><!--flex flex-col items-center justify-center">-->
+    <div class="dy-drawer-content">
         <!-- Page content here -->
         <div class="flex flex-col h-screen">
             <Navbar {...reference}>
@@ -16,24 +16,27 @@
                 </label>
             </Navbar>
             <main class="p-2 flex-grow bg-gray-200">
-                <nav>
-                    <a href="/">Home</a>
-                    <a href="/about">About</a>
-                    <a href="/history">History</a>
-                    <a href="/highlights">Highlights</a>
-                    <a href="/notes">Notes</a>
-                    <a href="/bookmarks">Bookmarks</a>
-                </nav>
                 <div class="container mx-auto "><slot></slot></div>
             </main>
         </div>
     </div> 
     <div class="dy-drawer-side">
         <label for="my-drawer" class="dy-drawer-overlay"></label> 
-        <ul class="dy-menu p-4 overflow-y-auto w-3/4 sm:w-80 bg-base-100 text-base-content">
+        <ul class="dy-menu p-1 overflow-y-auto w-3/4 sm:w-80 bg-base-100 text-base-content">
             <!-- Sidebar content here -->
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
+            <li><a>Search</a></li>
+            <div class="dy-divider m-1"></div>
+            <li><a href="/history">History</a></li>
+            <li><a href="/bookmarks">Bookmarks</a></li>
+            <li><a href="/notes">Notes</a></li>
+            <li><a href="/highlights">Highlights</a></li>
+            <div class="dy-divider m-1"></div>
+            <li><a>Share App</a></li>
+            <div class="dy-divider m-1"></div>
+            <li><a>Settings</a></li>
+            <li><a>Text Appearance</a></li>
+            <div class="dy-divider m-1"></div>
+            <li><a href="/about">About</a></li>
         </ul>
     </div>
   </div>
