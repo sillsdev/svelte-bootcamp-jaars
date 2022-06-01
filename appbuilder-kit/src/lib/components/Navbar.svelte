@@ -8,7 +8,19 @@
     import TabsMenu from "./TabsMenu.svelte";
     export let book = "";
     export let chapter = "";
-
+    let books = [
+        "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua",
+        "Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings",
+        "1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job",
+        "Psalm","Proverbs","Ecclesiastes","Song of Songs","Isaiah","Jeremiah",
+        "Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos",
+        "Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah",
+        "Haggai","Zechariah","Malachi","Matthew","Mark","Luke",
+        "John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians",
+        "Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy",
+        "2 Timothy","Titus","Philemon","Hebrews","James","1 Peter",
+        "2 Peter","1 John","2 John","3 John","Jude","Revelation",
+    ];
     let chapters = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
     let verses = [
         1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
@@ -23,6 +35,13 @@
             <svelte:fragment slot="label">
                 {book} <DropdownIcon/>
             </svelte:fragment>
+            <svelte:fragment slot="content">
+                <TabsMenu options={{
+                    "Book":{component:SelectGrid,props:{options:books}},
+                    "Chapter":{component:SelectGrid,props:{options:chapters}},
+                    "Verse":{component:SelectGrid,props:{options:verses}}
+                }} active="Book"/>
+            </svelte:fragment>
         </Dropdown>
         <Dropdown>
             <svelte:fragment slot="label">
@@ -30,8 +49,8 @@
             </svelte:fragment>
             <svelte:fragment slot="content">
                 <TabsMenu options={{
-                    "Chapter":{component:SelectGrid,props:{chapters}},
-                    "Verse":{component:SelectGrid,props:{verses}}
+                    "Chapter":{component:SelectGrid,props:{options:chapters}},
+                    "Verse":{component:SelectGrid,props:{options:verses}}
                 }} active="Chapter"/>
             </svelte:fragment>
         </Dropdown>
