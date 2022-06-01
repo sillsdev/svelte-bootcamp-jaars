@@ -6,7 +6,7 @@
         paragraphs:[
             {
                 1:{
-                    "1a":"",
+                    a:"",
                 },
             },
         ],
@@ -19,7 +19,7 @@
             {#each Object.keys(paragraph) as verse}
                 <span id="{verse}"><h4>{verse}</h4>
                     {#each Object.keys(paragraph[verse]) as versePart}
-                        <span id="{versePart}">
+                        <span id="{verse+versePart}">
                             {paragraph[verse][versePart]+" "}
                         </span>
                     {/each}

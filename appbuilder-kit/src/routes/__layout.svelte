@@ -14,7 +14,7 @@
                 <HamburgerIcon/>
             </label>
         </Navbar>
-        <main class="p-2 flex-grow bg-gray-200 container mx-auto ">
+        <main class="p-2 flex-grow bg-gray-200 container mx-auto overflow-y-auto">
             <slot></slot>
         </main>
     </div>

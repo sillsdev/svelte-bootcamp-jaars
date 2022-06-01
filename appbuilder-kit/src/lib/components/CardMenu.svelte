@@ -21,10 +21,5 @@
         <!-- svelte-ignore a11y-missing-attribute-->
             <a on:click={() => handleAction(a)}>{a}</a>
         {/each}
-        <!--Orignal menu. Handle actual actions later-->
-        <!--<a href="I-0">View</a>
-        <a href="E-0">Edit</a>
-        <a href="S-0">Share</a>
-        <a href="D-0">Delete</a>-->
     </div>
 </div>
