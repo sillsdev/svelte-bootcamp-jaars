@@ -31,7 +31,7 @@
         <IconCard on:menuaction={e => handleMenuaction(e, n.id)} {...n} />
     {/each}
 
-    <!--Original-->
+<!--Original-->
     <!--<div id="0" class="annotation-item-block">
         <div class="annotation-item-icon annotation-float-left">
             <span><img src="ic_note_24_black.png" alt="text bubble"></span>
