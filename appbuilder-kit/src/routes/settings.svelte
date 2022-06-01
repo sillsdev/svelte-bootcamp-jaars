@@ -52,18 +52,18 @@
     <h1>{setting}</h1>
     {#each Object.keys(settings[setting]) as feature}
         {#if settings[setting][feature].type === "toggle"}
-        <div class="dy-form-control w-full max-w-xs">
-            <label class="dy-label cursor-pointer">
-                <span class="dy-label-text">{feature}</span> 
-                <input type="checkbox" class="dy-toggle" bind:checked={settings[setting][feature].value} />
-            </label>
-            {#if settings[setting][feature].hasOwnProperty('subtitle')}
-                <!-- svelte-ignore a11y-label-has-associated-control -->
-                <label class="dy-label">
-                    <span class="dy-label-text-alt">{settings[setting][feature].subtitle}</span>
+            <div class="dy-form-control w-full max-w-xs">
+                <label class="dy-label cursor-pointer">
+                    <span class="dy-label-text">{feature}</span> 
+                    <input type="checkbox" class="dy-toggle" bind:checked={settings[setting][feature].value} />
                 </label>
-            {/if}
-        </div>
+                {#if settings[setting][feature].hasOwnProperty('subtitle')}
+                    <!-- svelte-ignore a11y-label-has-associated-control -->
+                    <label class="dy-label">
+                        <span class="dy-label-text-alt">{settings[setting][feature].subtitle}</span>
+                    </label>
+                {/if}
+            </div>
         {:else if settings[setting][feature].type === "select"}
             <div class="dy-form-control w-full max-w-xs">
                 <!-- svelte-ignore a11y-label-has-associated-control -->
