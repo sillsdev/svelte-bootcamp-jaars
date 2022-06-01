@@ -1,12 +1,17 @@
 <script>
     export let options = {"":{component:"",props:""},};
     export let active = "";
+    function handleMenuaction(e) {
+        console.log(e.detail.text)
+    }
 </script>
 
 <div class="tabs bg-primary">
     {#each Object.keys(options) as opt}
         <!-- svelte-ignore a11y-missing-attribute -->
-        <a class="dy-tab dy-tab-bordered {active === opt? "dy-tab-active":""}">{opt}</a> 
+        <a on:click={() => active = opt}
+        class="dy-tab dy-tab-bordered {active === opt? "dy-tab-active":""}">{opt}</a> 
     {/each}
 </div>
-<!--<svelte:component this={options[active].component} {...options[active].props}/>-->
+
+<svelte:component on:menuaction={handleMenuaction} this={options[active].component} {...options[active].props}/>
