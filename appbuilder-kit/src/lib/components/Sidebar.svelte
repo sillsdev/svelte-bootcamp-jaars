@@ -1,4 +1,13 @@
 <script>
+    import SearchIcon from "$lib/icons/SearchIcon.svelte";
+    import HistoryIcon from "$lib/icons/HistoryIcon.svelte";
+    import BookmarkIcon from "$lib/icons/BookmarkIcon.svelte";
+    import NoteIcon from "$lib/icons/NoteIcon.svelte";
+    import HighlightIcon from "$lib/icons/HighlightIcon.svelte";
+    import ShareIcon from "$lib/icons/ShareIcon.svelte";
+    import SettingsIcon from "$lib/icons/SettingsIcon.svelte";
+    import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
+    import AboutIcon from "$lib/icons/AboutIcon.svelte";
     export let drawerId = "drawer";
 </script>
 
@@ -12,19 +21,26 @@
         <label for="{drawerId}" class="dy-drawer-overlay"></label> 
         <ul class="dy-menu p-1 overflow-y-auto w-3/4 sm:w-80 bg-base-100 text-base-content">
             <!-- Sidebar content here -->
-            <li><a>Search</a></li>
+            <li><a href="/search"><SearchIcon/>Search</a></li>
             <div class="dy-divider m-1"></div>
-            <li><a href="/history">History</a></li>
-            <li><a href="/bookmarks">Bookmarks</a></li>
-            <li><a href="/notes">Notes</a></li>
-            <li><a href="/highlights">Highlights</a></li>
+            <li><a href="/history"><HistoryIcon/>History</a></li>
+            <li><a href="/bookmarks"><BookmarkIcon/>Bookmarks</a></li>
+            <li><a href="/notes"><NoteIcon/>Notes</a></li>
+            <li><a href="/highlights"><HighlightIcon/>Highlights</a></li>
             <div class="dy-divider m-1"></div>
-            <li><a>Share App</a></li>
+            <li><a><ShareIcon/>Share App</a></li>
             <div class="dy-divider m-1"></div>
-            <li><a>Settings</a></li>
-            <li><a>Text Appearance</a></li>
+            <li><a><SettingsIcon/>Settings</a></li>
+            <!-- svelte-ignore a11y-missing-attribute -->
+            <li><a><TextAppearanceIcon/>Text Appearance</a></li>
             <div class="dy-divider m-1"></div>
-            <li><a href="/about">About</a></li>
+            <li><a href="/about"><AboutIcon/>About</a></li>
         </ul>
     </div>
 </div>
+
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>

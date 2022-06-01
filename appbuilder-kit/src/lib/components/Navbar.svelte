@@ -59,9 +59,9 @@
         <button class="dy-btn dy-btn-ghost dy-btn-circle">
             <MuteIcon/>
         </button>
-        <button class="dy-btn dy-btn-ghost dy-btn-circle">
+        <a href="/search" class="dy-btn dy-btn-ghost dy-btn-circle">
             <SearchIcon/>
-        </button>
+        </a>
         <Dropdown>
             <svelte:fragment slot="label">
                 <TextAppearanceIcon/>
