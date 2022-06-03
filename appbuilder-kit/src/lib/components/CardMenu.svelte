@@ -4,7 +4,9 @@
     const dispatch = createEventDispatcher();
     export let actions = [""];
     let showMenu = false;
-
+    /**
+     * @param {string} action
+     */
     function handleAction(action) {
         dispatch('menuaction', {
             text: action

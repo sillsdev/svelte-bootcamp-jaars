@@ -1,5 +1,5 @@
 <script>
-
+    /** @type App.Settings */
     let settings = {
         "Text Display":{
             "Show verse numbers":{
@@ -71,7 +71,7 @@
                     <span class="dy-label-text">{feature}</span>
                 </label>
                 <select class="dy-select dy-select-bordered" bind:value={settings[setting][feature].value}>
-                    {#each Object.values(settings[setting][feature].options) as opt}
+                    {#each settings[setting][feature].options ?? [] as opt}
                         <option value={opt}>{opt}</option>
                     {/each}
                 </select>

@@ -1,5 +1,6 @@
 <script>
     import ColorCard from '$lib/components/ColorCard.svelte';
+    /** @type App.Highlight[] */
     let highlights = [
         {
             id:"1",
@@ -17,6 +18,10 @@
             actions:["View","Share","Delete"],
             highlight_color:"2",
         },];
+    /**
+    * @param {CustomEvent<any>} event
+    * @param {string} id
+    */
     function handleMenuaction(event, id) {
         console.log(event.detail.text+"-"+id);
     }     

@@ -4,6 +4,9 @@
     const cols = 5;
     const dispatch = createEventDispatcher();
     $: rows = Math.ceil(options.length / cols);
+    /**
+    * @param {string} opt
+    */
     function handleClick(opt) {
         dispatch('menuaction', {
             text: opt

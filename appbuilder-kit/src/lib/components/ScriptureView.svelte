@@ -1,8 +1,12 @@
 <script>
+    /**
+     * @type App.BibleText
+     */
     export let text = {
         title:"",
         book:"",
         chapter:"",
+        bookmark:"",
         paragraphs:[
             {
                 1:{
@@ -16,11 +20,11 @@
     <h1 class="text-center">{text.title}</h1>
     {#each text.paragraphs as paragraph}
         <p>
-            {#each Object.keys(paragraph) as verse}
+            {#each Object.entries(paragraph) as [verse, verseData]}
                 <span id="{verse}"><h4>{verse}</h4>
-                    {#each Object.keys(paragraph[verse]) as versePart}
+                    {#each Object.entries(verseData) as [versePart, verseText]}
                         <span id="{verse+versePart}">
-                            {paragraph[verse][versePart]+" "}
+                            {verseText+" "}
                         </span>
                     {/each}
                 </span>

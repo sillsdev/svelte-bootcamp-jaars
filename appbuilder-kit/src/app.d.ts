@@ -7,4 +7,50 @@ declare namespace App {
 	// interface Platform {}
 	// interface Session {}
 	// interface Stuff {}
+	interface Paragraph {
+		[key: number]: {
+			[key: string]: string;
+		}
+	}
+	interface BibleText {
+		title: string;
+		book: string;
+		chapter: string;
+		bookmark: string;
+		paragraphs: Paragraph[];
+	}
+	interface Highlight {
+		id: string;
+		reference: string;
+		text: string;
+		date: string;
+		actions: string[];
+		highlight_color: string;
+	}
+
+	interface TabMenuOptions {
+		[key: string]: {
+			component: any;
+			props: {
+				options: any[];
+			}
+		}
+	}
+
+	interface Settings {
+		[category: string]: {
+			[setting: string]: {
+				type: string;
+				value: any;
+				options?: string[];
+				subtitle?: string;	
+			}
+		}
+	}
 }
+
+declare namespace svelte.JSX {
+	interface HTMLProps<T> {
+	  onoutclick?: () => void
+	}
+  }
