@@ -8,13 +8,13 @@
 </script>
 
 <Sidebar drawerId={drawerName}>
-    <div class="flex flex-col h-screen items-center justify-center bg-gray-200">
+    <div class="flex flex-col justify-center">
         <Navbar {...reference}>
             <label for="{drawerName}" slot="drawer-button" class="dy-btn dy-btn-ghost p-1 dy-drawer-button lg:hidden">
                 <HamburgerIcon/>
             </label>
         </Navbar>
-        <main class="p-2 flex-grow bg-gray-200 container mx-auto overflow-y-auto">
+        <main class="p-2 flex-grow container mx-auto overflow-y-auto">
             <slot></slot>
         </main>
     </div>
