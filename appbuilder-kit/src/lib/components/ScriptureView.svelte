@@ -12,7 +12,7 @@
         ],
     };
 </script>
-<article class="prose">
+<article class="prose container mx-auto">
     <h1 class="text-center">{text.title}</h1>
     {#each text.paragraphs as paragraph}
         <p>
