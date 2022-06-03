@@ -1,5 +1,5 @@
 <h1>About</h1>
 
-<body class="about">
+<p>
     This is a test.
-</body>
+</p>
