@@ -26,8 +26,6 @@
 
 <h1>Bookmarks</h1>
 
-<body class="annotations">
-    {#each bookmarks as b}
-        <IconCard on:menuaction={e => handleMenuaction(e, b.id)} {...b} />
-    {/each}
-</body>
+{#each bookmarks as b}
+    <IconCard on:menuaction={e => handleMenuaction(e, b.id)} {...b} />
+{/each}
