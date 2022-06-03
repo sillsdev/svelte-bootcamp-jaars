@@ -19,6 +19,10 @@
             src:"icons/ic_bookmark_24_red.png",
             alt:"red bookmark",
         },];
+    /**
+    * @param {CustomEvent<any>} event
+    * @param {string} id
+    */
     function handleMenuaction(event, id) {
         console.log(event.detail.text+"-"+id);
     }

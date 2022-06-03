@@ -1,6 +1,11 @@
 <script>
-    export let options = {"":{component:"",props:""},};
+    /** @type App.TabMenuOptions */
+    export let options = {"":{component:"",props:{options: [""]}},};
     export let active = "";
+
+    /**
+    * @param {CustomEvent<any>} e
+    */
     function handleMenuaction(e) {
         console.log(e.detail.text)
     }
