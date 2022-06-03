@@ -1,6 +1,6 @@
 <script>
     /** @type App.TabMenuOptions */
-    export let options = {"":{component:"",props:{options: [""]}},};
+    export let options = {"":{component:"",props:{}},};
     export let active = "";
 
     /**

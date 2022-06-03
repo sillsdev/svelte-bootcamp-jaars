@@ -31,9 +31,7 @@ declare namespace App {
 	interface TabMenuOptions {
 		[key: string]: {
 			component: any;
-			props: {
-				options: any[];
-			}
+			props: any;
 		}
 	}
 
@@ -51,6 +49,6 @@ declare namespace App {
 
 declare namespace svelte.JSX {
 	interface HTMLProps<T> {
-	  onoutclick?: () => void
+		onoutclick?: () => void
 	}
-  }
+}
