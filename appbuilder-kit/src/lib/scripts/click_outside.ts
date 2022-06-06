@@ -1,8 +1,5 @@
-/**
- * @param {HTMLDivElement} node
- */
-export function clickOutside(node) {
-	const handleClick = (/** @type {{ target: any; }} */ event) => {
+export function clickOutside(node: HTMLDivElement) {
+	const handleClick = (event: {target: any}) => {
 		if (!node.contains(event.target)) {
 			node.dispatchEvent(new CustomEvent("outclick"));
 		}

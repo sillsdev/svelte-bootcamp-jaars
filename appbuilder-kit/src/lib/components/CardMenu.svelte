@@ -1,13 +1,11 @@
-<script>
+<script lang="ts">
     import { clickOutside } from '$lib/scripts/click_outside.js';
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
     export let actions = [""];
     let showMenu = false;
-    /**
-     * @param {string} action
-     */
-    function handleAction(action) {
+
+    function handleAction(action: string) {
         dispatch('menuaction', {
             text: action
         });

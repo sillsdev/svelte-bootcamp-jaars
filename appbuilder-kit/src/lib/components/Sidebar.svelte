@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import BibleIcon from "$lib/icons/BibleIcon.svelte";
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
     import HistoryIcon from "$lib/icons/HistoryIcon.svelte";

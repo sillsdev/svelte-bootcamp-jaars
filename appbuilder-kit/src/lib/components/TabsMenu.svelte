@@ -1,13 +1,9 @@
-<script>
-    /** @type App.TabMenuOptions */
-    export let options = {"":{component:"",props:{}},};
+<script lang="ts">
+    export let options: App.TabMenuOptions = {"":{component:"",props:{}},};
     export let active = "";
 
-    /**
-    * @param {CustomEvent<any>} e
-    */
-    function handleMenuaction(e) {
-        console.log(e.detail.text)
+    function handleMenuaction(e: CustomEvent) {
+        console.log(e.detail.text);
     }
 </script>
 

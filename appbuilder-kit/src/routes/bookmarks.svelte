@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import IconCard from '$lib/components/IconCard.svelte';
     let bookmarks = [
         {
@@ -19,11 +19,8 @@
             src:"icons/ic_bookmark_24_red.png",
             alt:"red bookmark",
         },];
-    /**
-    * @param {CustomEvent<any>} event
-    * @param {string} id
-    */
-    function handleMenuaction(event, id) {
+    
+    function handleMenuaction(event: CustomEvent, id: string) {
         console.log(event.detail.text+"-"+id);
     }
 </script>

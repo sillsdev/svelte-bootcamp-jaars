@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
     let searchText = "";
     let matchWholeWords = true;
