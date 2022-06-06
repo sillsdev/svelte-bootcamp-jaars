@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
     import ColorCard from '$lib/components/ColorCard.svelte';
-    /** @type App.Highlight[] */
-    let highlights = [
+
+    let highlights: App.Highlight[] = [
         {
             id:"1",
             reference:"John 1:7",
@@ -18,11 +18,8 @@
             actions:["View","Share","Delete"],
             highlight_color:"2",
         },];
-    /**
-    * @param {CustomEvent<any>} event
-    * @param {string} id
-    */
-    function handleMenuaction(event, id) {
+
+    function handleMenuaction(event: CustomEvent, id: string) {
         console.log(event.detail.text+"-"+id);
     }     
 </script>

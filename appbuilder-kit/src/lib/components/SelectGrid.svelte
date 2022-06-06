@@ -1,13 +1,11 @@
-<script>
+<script lang="ts">
     import { createEventDispatcher } from "svelte";
     export let options = [""];
     const cols = 5;
     const dispatch = createEventDispatcher();
     $: rows = Math.ceil(options.length / cols);
-    /**
-    * @param {string} opt
-    */
-    function handleClick(opt) {
+
+    function handleClick(opt: string) {
         dispatch('menuaction', {
             text: opt
         });

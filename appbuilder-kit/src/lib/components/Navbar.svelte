@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Dropdown from "./Dropdown.svelte";
     import SelectGrid from "./SelectGrid.svelte";
     import MuteIcon from "$lib/icons/MuteIcon.svelte";

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import HistoryCard from '$lib/components/HistoryCard.svelte';
     let history = [
         {book:"World English Bible",

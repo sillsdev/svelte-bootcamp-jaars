@@ -1,6 +1,5 @@
-<script>
-    /** @type App.Settings */
-    let settings = {
+<script lang="ts">
+    let settings: App.Settings = {
         "Text Display":{
             "Show verse numbers":{
                 type:"toggle",

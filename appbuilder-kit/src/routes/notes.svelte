@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import IconCard from '$lib/components/IconCard.svelte';
     let notes = [
         {
@@ -19,11 +19,8 @@
             src:"icons/ic_note_black_24dp.png",
             alt:"text bubble",
         },];
-    /**
-    * @param {CustomEvent<any>} event
-    * @param {string} id
-    */
-    function handleMenuaction(event, id) {
+
+    function handleMenuaction(event: CustomEvent, id: string) {
         console.log(event.detail.text+"-"+id);
     }
 </script>

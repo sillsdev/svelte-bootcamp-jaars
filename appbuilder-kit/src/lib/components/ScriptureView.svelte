@@ -1,8 +1,5 @@
-<script>
-    /**
-     * @type App.BibleText
-     */
-    export let text = {
+<script lang="ts">
+    export let text: App.BibleText = {
         title:"",
         book:"",
         chapter:"",

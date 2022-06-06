@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import CardMenu from './CardMenu.svelte';
     export let reference = "";
     export let text = "";
