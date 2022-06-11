@@ -1,9 +1,16 @@
 <script lang="ts">
+import { createEventDispatcher } from "svelte";
+
+
     export let options: App.TabMenuOptions = {"":{component:"",props:{}},};
     export let active = "";
+    const dispatch = createEventDispatcher();
 
     function handleMenuaction(e: CustomEvent) {
-        console.log(e.detail.text);
+        dispatch('menuaction', {
+            text: e.detail.text,
+            tab: active
+        });
     }
 </script>
 

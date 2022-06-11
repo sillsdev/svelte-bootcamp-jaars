@@ -9,6 +9,7 @@
     import SettingsIcon from "$lib/icons/SettingsIcon.svelte";
     import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
     import AboutIcon from "$lib/icons/AboutIcon.svelte";
+import { globalConfig } from "$lib/scripts/stores";
     export let drawerId = "drawer";
 </script>
 
@@ -22,7 +23,7 @@
         <label for="{drawerId}" class="dy-drawer-overlay"></label>
         <ul class="dy-menu p-1 overflow-y-auto w-3/4 sm:w-80 bg-base-100 text-base-content">
             <!-- Sidebar content here -->
-            <a href="/"><BibleIcon/></a>
+            <li><a href="/"><BibleIcon/><span>{$globalConfig.name}</span></a></li>
             <li><a href="/search"><SearchIcon/>Search</a></li>
             <div class="dy-divider m-1"></div>
             <li><a href="/history"><HistoryIcon/>History</a></li>

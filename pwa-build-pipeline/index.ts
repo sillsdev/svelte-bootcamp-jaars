@@ -32,6 +32,7 @@ type BookCollection = {
     };
 }
 const data: {
+    name?: string;
     mainFeatures?: any;
     fonts?: {
         name: string;
@@ -61,6 +62,10 @@ function parseConfigValue(value: any) {
     else {} // " " split array, string, enum or time
     return value;
 }
+
+// Name
+data.name = document.getElementsByTagName("app-name")[0].innerHTML;
+console.log(`Converting ${data.name}...`);
 
 // Features
 const mainFeatureTags = document.querySelector("features[type=main]")?.getElementsByTagName("e");
