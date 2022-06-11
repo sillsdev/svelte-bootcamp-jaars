@@ -32,7 +32,7 @@ import { globalConfig } from "$lib/scripts/stores";
             <div class="">Special characters</div>
             <div class="special-characters">
                 {#each specialCharacters as character}
-                    <div class="special-character bg-primary" on:click|preventDefault={e => searchText += character}>{character}</div>
+                    <div class="special-character bg-primary" on:click={e => searchText += character}>{character}</div>
                 {/each}
             </div>
         </div>

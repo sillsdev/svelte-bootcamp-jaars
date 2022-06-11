@@ -6,9 +6,9 @@ import { createEventDispatcher } from "svelte";
     export let active = "";
     const dispatch = createEventDispatcher();
 
-    function handleMenuaction(e: CustomEvent) {
+    function handleMenuaction({ detail }: CustomEvent) {
         dispatch('menuaction', {
-            text: e.detail.text,
+            text: detail.text,
             tab: active
         });
     }

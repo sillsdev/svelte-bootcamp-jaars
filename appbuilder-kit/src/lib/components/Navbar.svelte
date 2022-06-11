@@ -34,7 +34,7 @@ import { activeBook, globalConfig } from "$lib/scripts/stores";
     $: chapters = Array.from(Array($activeBook?.chapters), (_, i) => i+1); // Creates an array [1, 2, 3] from an input 3
 
     function navigateReference(e: CustomEvent) {
-        console.log(`Navigated to ${e.detail.tab} ${e.detail.text}`);
+        console.log(`Navigated to ${e.detail.tab} ${e.detail.text}. New reference: ${book} ${chapter}:_`);
         // TODO: after proskomma store is finished, update the scripture view to the new reference
     }
 </script>
