@@ -14,6 +14,7 @@ type BookCollection = {
     books: {
         id: string;
         name: string;
+        abbreviation: string;
         testament: string; // TODO: better name for OT/NT
         section: string; // Pentateuch
         chapters: number;
@@ -145,7 +146,8 @@ for(const tag of booksTags) {
             id: book.attributes.getNamedItem("id")!.value,
             name: book.getElementsByTagName("n")[0]?.innerHTML,
             section: book.getElementsByTagName("sg")[0]?.innerHTML,
-            testament: book.getElementsByTagName("g")[0]?.innerHTML
+            testament: book.getElementsByTagName("g")[0]?.innerHTML,
+            abbreviation: book.getElementsByTagName("v")[0]?.innerHTML,
         });
     }
     const stylesTag = tag.getElementsByTagName("styles-info")[0];
