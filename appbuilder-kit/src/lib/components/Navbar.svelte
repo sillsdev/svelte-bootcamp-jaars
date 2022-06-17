@@ -6,7 +6,7 @@
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
     import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
     import TabsMenu from "./TabsMenu.svelte";
-import { activeBook, globalConfig } from "$lib/scripts/stores";
+    import { activeBook, globalConfig } from "$lib/scripts/stores";
     export let book = "";
     export let chapter = "";
     // let books = [
@@ -32,7 +32,7 @@ import { activeBook, globalConfig } from "$lib/scripts/stores";
 
     // FIXME: Doesn't account for missing chapters. Shoud parse chaptersN for included chapters
     $: chapters = Array.from(Array($activeBook?.chapters), (_, i) => i+1); // Creates an array [1, 2, 3] from an input 3
-
+    $: bookAbbreviations = $globalConfig.bookCollections[0 /*currentCollection*/].books.map(book => (book.abbreviation || book.id).substring(0, 4));
     function navigateReference(e: CustomEvent) {
         console.log(`Navigated to ${e.detail.tab} ${e.detail.text}. New reference: ${book} ${chapter}:_`);
         // TODO: after proskomma store is finished, update the scripture view to the new reference
@@ -48,7 +48,7 @@ import { activeBook, globalConfig } from "$lib/scripts/stores";
             </svelte:fragment>
             <svelte:fragment slot="content">
                 <TabsMenu options={{
-                    "Book":{component:SelectGrid,props:{options:$globalConfig.bookCollections[0 /*currentCollection*/].books.map(book => book.id)}},
+                    "Book":{component:SelectGrid,props:{options:bookAbbreviations}},
                     "Chapter":{component:SelectGrid,props:{options:chapters}},
                     "Verse":{component:SelectGrid,props:{options:verses}}
                 }} active="Book" on:menuaction={navigateReference} />
