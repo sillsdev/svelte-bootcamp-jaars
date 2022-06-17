@@ -30,19 +30,29 @@
         margin-left: auto;
         margin-right: auto;
         padding: 0px;
-        border-radius: 5px;
+        border-collapse: unset;
+        background-color: lightgray;
     }
-
     tr {
         width: 100%;
         margin: 0px;
         padding: 0px;
     }
     td {
-        text-align:left;
+        text-align:center;
         overflow:hidden;
         margin: 0px;
         padding: 0px;
         position: relative;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        background-color: white;
+    }
+    span {
+        text-overflow: ""; /* Works on Firefox only */
+        overflow: hidden;
+        display: inline-block;
+        padding: 1.2em 0;
+        vertical-align: middle;
     }
 </style>
