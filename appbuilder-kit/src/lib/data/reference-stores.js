@@ -54,7 +54,7 @@ export const bookStore = (docSet) => {
 };
 
 export const chapterStore = (docSet, book) => {
-    const internal = writable("");
+    const internal = writable("1");
     const external = derived([internal, docSet, book], ([$internal, $docSet, $book], set) => {
         queryPk(`{
             docSet(id: "${$docSet}") { 
@@ -81,4 +81,28 @@ export const chapterStore = (docSet, book) => {
     })
 
     return { set: internal.set, subscribe: external.subscribe }
+};
+
+export const numVersesStore = (docSet, book, chapter) => {
+    return derived(
+        [docSet, book, chapter],
+        ([$docSet, $book, $chapter], set) => {
+            queryPk(`{
+                docSet(id: "${$docSet}") { 
+                    document(bookCode:"${$book}") {
+                        cvIndex(chapter:${$chapter}) {
+                            verseNumbers { number }
+                        }
+                    }
+                }
+            }`, 
+            r => {
+                try {
+                    set(JSON.parse(r).data.docSet.document.cvIndex.verseNumbers.length);
+                } catch (err) {
+                    if(!(err instanceof TypeError)) { throw err;}
+                }
+            });
+        }
+    );
 };
