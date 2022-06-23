@@ -1,9 +1,17 @@
 <script lang="ts">
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
+    import { docSet } from "$lib/data/stores";
+    import { queryPk } from "$lib/scripts/queryPk";
+    import { queries } from 'proskomma-tools';
     let searchText = "";
     let matchWholeWords = true;
+    let results = [];
     function submit() {
-        console.log("search: "+searchText+"\nmatch whole words: "+matchWholeWords)
+        const bcQuery = queries.searchForBookCodes({
+            text: searchText,
+            docSetId: $docSet
+        });
+        console.log(bcQuery);
     }
 </script>
 
