@@ -14,7 +14,7 @@
             <!-- svelte-ignore a11y-autofocus -->
             <input autofocus type="text" placeholder="Search" class="dy-input dy-input-bordered" bind:value={searchText}/>
             <button on:click|preventDefault={submit} class="dy-btn">
-                <SearchIcon />
+                <SearchIcon _class="fill-base-100"/>
             </button>
         </label>
     </div>
