@@ -10,24 +10,26 @@
     import TabsMenu from "./TabsMenu.svelte";
     export let book = "";
     export let chapter = "";
-    let books = [
-        "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua",
-        "Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings",
-        "1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job",
-        "Psalm","Proverbs","Ecclesiastes","Song of Songs","Isaiah","Jeremiah",
-        "Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos",
-        "Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah",
-        "Haggai","Zechariah","Malachi","Matthew","Mark","Luke",
-        "John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians",
-        "Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy",
-        "2 Timothy","Titus","Philemon","Hebrews","James","1 Peter",
-        "2 Peter","1 John","2 John","3 John","Jude","Revelation",
-    ];
-    let chapters = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
-    let verses = [
-        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-        21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-        41,42,43,44,45,46,47,48,49,50,51];
+    /*
+        let books = [
+            "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua",
+            "Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings",
+            "1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job",
+            "Psalm","Proverbs","Ecclesiastes","Song of Songs","Isaiah","Jeremiah",
+            "Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos",
+            "Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah",
+            "Haggai","Zechariah","Malachi","Matthew","Mark","Luke",
+            "John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians",
+            "Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy",
+            "2 Timothy","Titus","Philemon","Hebrews","James","1 Peter",
+            "2 Peter","1 John","2 John","3 John","Jude","Revelation",
+        ];
+        let chapters = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
+        let verses = [
+            1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+            21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+            41,42,43,44,45,46,47,48,49,50,51];
+    */
     
     $: promise = queryPk(`{
         docSet(id: "`+$nextDocSet+`") {
@@ -93,7 +95,3 @@
         </Dropdown>
     </div>
 </div>
-{$nextDocSet}
-{$nextBook}
-{$nextChapter}
-{$nextNumVerses}
