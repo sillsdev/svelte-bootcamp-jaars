@@ -10,7 +10,7 @@
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
     import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
     import SinglePaneIcon from "$lib/icons/SinglePaneIcon.svelte";
-    import SideBySideIcon from "$lib/icons/SideBySideIcon.svelte";
+    import TwoPaneIcon from "$lib/icons/TwoPaneIcon.svelte";
     import VerseByVerseIcon from "$lib/icons/VerseByVerseIcon.svelte";
     
     /*
@@ -60,11 +60,14 @@
             <svelte:fragment slot="content">
                 {#await promise then res}
                 <TabsMenu options={{
-                    "Single Pane":{tab:{component:SinglePaneIcon},component:SelectGrid,props:{
+                    "Single Pane":{tab:{component:SinglePaneIcon},
+                        component:SelectGrid,props:{
                         options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
-                    "Side by Side":{tab:{component:SideBySideIcon},component:SelectGrid,props:{
+                    "Two Panes":{tab:{component:TwoPaneIcon},
+                        component:SelectGrid,props:{
                         options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
-                    "Verse by Verse":{tab:{component:VerseByVerseIcon},component:SelectGrid,props:{
+                    "Verse by Verse":{tab:{component:VerseByVerseIcon},
+                        component:SelectGrid,props:{
                         options:JSON.parse(res).data.docSets.map(ds => ds.id)}}
                 }} active="Single Pane"/>
                 {/await}
