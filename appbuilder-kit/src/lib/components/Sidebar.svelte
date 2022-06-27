@@ -13,7 +13,7 @@
     export let drawerId = "drawer";
 </script>
 
-<div class="dy-drawer {$viewMode === "Two Panes"? "lg:dy-drawer-mobile":"dy-drawer-mobile"}">
+<div class="dy-drawer {$viewMode === "Two Panes"? "xl:dy-drawer-mobile":"dy-drawer-mobile"}">
     <input id="{drawerId}" type="checkbox" class="dy-drawer-toggle" />
     <div class="dy-drawer-content bg-gray-200 ">
         <!-- Page content here -->

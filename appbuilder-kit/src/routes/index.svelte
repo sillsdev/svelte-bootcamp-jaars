@@ -1,5 +1,6 @@
 <script lang="ts">
     import ScriptureView from "$lib/components/ScriptureView.svelte";
+    import { viewMode } from "$lib/data/stores";
     let text: App.BibleText = {
         title:"The Good News According to John",
         book:"John",
@@ -36,4 +37,12 @@
     };
 </script>
 
-<ScriptureView {text}/>
+{#if $viewMode === "Two Panes"}
+    <div class="flex flex-col sm:flex-row">
+        <ScriptureView {text}/>
+        <div class="dy-divider sm:dy-divider-horizontal"></div>
+        <ScriptureView {text}/>
+    </div>
+{:else}
+    <ScriptureView {text}/>
+{/if}

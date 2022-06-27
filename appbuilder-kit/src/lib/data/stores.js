@@ -29,4 +29,4 @@ export const bookTitle = derived([docSet, book], ([$docSet, $book], set) => {
     })
 });
 
-export const viewMode = writable("Single Pane");
+export const viewMode = writable("Two Panes");
