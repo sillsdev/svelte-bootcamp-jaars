@@ -1,5 +1,5 @@
 import { docSetStore, bookStore, chapterStore, numVersesStore } from './reference-stores';
-import { derived } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 import { queryPk } from '../scripts/queryPk';
 
 export const docSet = docSetStore();
@@ -28,3 +28,5 @@ export const bookTitle = derived([docSet, book], ([$docSet, $book], set) => {
         }
     })
 });
+
+export const viewMode = writable("Single Pane");
