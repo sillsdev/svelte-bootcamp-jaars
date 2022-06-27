@@ -3,13 +3,16 @@
     import { nextBook, nextDocSet, nextChapter, nextNumVerses } from '$lib/data/stores';
     import Dropdown from "./Dropdown.svelte";
     import SelectGrid from "./SelectGrid.svelte";
+    import TabsMenu from "./TabsMenu.svelte";
+    //Icons
     import MuteIcon from "$lib/icons/MuteIcon.svelte";
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
     import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
-
-    import TabsMenu from "./TabsMenu.svelte";
-
+    import SinglePaneIcon from "$lib/icons/SinglePaneIcon.svelte";
+    import SideBySideIcon from "$lib/icons/SideBySideIcon.svelte";
+    import VerseByVerseIcon from "$lib/icons/VerseByVerseIcon.svelte";
+    
     /*
         let books = [
             "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua",
@@ -32,6 +35,9 @@
     */
     
     $: promise = queryPk(`{
+        docSets {
+            id
+        }
         docSet(id: "`+$nextDocSet+`") {
             documents {
                 bookCode:header(id: "bookCode")
@@ -48,12 +54,23 @@
 <div class="dy-navbar bg-primary">
     <div class="dy-navbar-start">
         <slot name="drawer-button"/>
+        <!-- Translation/View Selector -->
         <Dropdown>
             <svelte:fragment slot="label">{$nextDocSet} <DropdownIcon/></svelte:fragment>
             <svelte:fragment slot="content">
-
+                {#await promise then res}
+                <TabsMenu options={{
+                    "Single Pane":{tab:{component:SinglePaneIcon},component:SelectGrid,props:{
+                        options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
+                    "Side by Side":{tab:{component:SideBySideIcon},component:SelectGrid,props:{
+                        options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
+                    "Verse by Verse":{tab:{component:VerseByVerseIcon},component:SelectGrid,props:{
+                        options:JSON.parse(res).data.docSets.map(ds => ds.id)}}
+                }} active="Single Pane"/>
+                {/await}
             </svelte:fragment>
         </Dropdown>
+        <!-- Book Selector -->
         <Dropdown>
             <svelte:fragment slot="label">
                 {$nextBook} <DropdownIcon/>
@@ -71,6 +88,7 @@
                 {/await}
             </svelte:fragment>
         </Dropdown>
+        <!-- Chapter Selector -->
         <Dropdown>
             <svelte:fragment slot="label">
                 {$nextChapter} <DropdownIcon/>
@@ -95,10 +113,7 @@
             <SearchIcon/>
         </a>
         <Dropdown>
-            <svelte:fragment slot="label">
-                <TextAppearanceIcon/>
-            </svelte:fragment>
+            <svelte:fragment slot="label"> <TextAppearanceIcon/> </svelte:fragment>
         </Dropdown>
     </div>
 </div>
-{@html "<TextAppearanceIcon />"}

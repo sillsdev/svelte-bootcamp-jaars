@@ -30,6 +30,10 @@ declare namespace App {
 
 	interface TabMenuOptions {
 		[key: string]: {
+			tab?:{
+				component: any;
+				props?: any;
+			},
 			component: any;
 			props: any;
 		}
