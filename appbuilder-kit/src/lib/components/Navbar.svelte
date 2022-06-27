@@ -7,9 +7,9 @@
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
     import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
+
     import TabsMenu from "./TabsMenu.svelte";
-    export let book = "";
-    export let chapter = "";
+
     /*
         let books = [
             "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua",
@@ -49,8 +49,14 @@
     <div class="dy-navbar-start">
         <slot name="drawer-button"/>
         <Dropdown>
+            <svelte:fragment slot="label">{$nextDocSet} <DropdownIcon/></svelte:fragment>
+            <svelte:fragment slot="content">
+
+            </svelte:fragment>
+        </Dropdown>
+        <Dropdown>
             <svelte:fragment slot="label">
-                {book} <DropdownIcon/>
+                {$nextBook} <DropdownIcon/>
             </svelte:fragment>
             <svelte:fragment slot="content">
                 {#await promise then res}
@@ -67,7 +73,7 @@
         </Dropdown>
         <Dropdown>
             <svelte:fragment slot="label">
-                {chapter} <DropdownIcon/>
+                {$nextChapter} <DropdownIcon/>
             </svelte:fragment>
             <svelte:fragment slot="content">
                 {#await promise then res}
@@ -95,3 +101,4 @@
         </Dropdown>
     </div>
 </div>
+{@html "<TextAppearanceIcon />"}
