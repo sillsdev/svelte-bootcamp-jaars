@@ -8,13 +8,24 @@
 
 <Sidebar drawerId={drawerName}>
     <div class="flex flex-col justify-center">
-        <Navbar>
-            <label for="{drawerName}" slot="drawer-button" class="dy-btn dy-btn-ghost p-1 dy-drawer-button lg:hidden">
-                <HamburgerIcon/>
-            </label>
-        </Navbar>
+        <div class="navbar">
+            <Navbar>
+                <label for="{drawerName}" slot="drawer-button" class="dy-btn dy-btn-ghost p-1 dy-drawer-button lg:hidden">
+                    <HamburgerIcon/>
+                </label>
+            </Navbar>
+        </div>
         <main class="p-2 flex-grow container mx-auto overflow-y-auto">
             <slot></slot>
         </main>
     </div>
 </Sidebar>
+
+<style>
+    .navbar {
+        height: 10vh;
+    }
+    main {
+        height: 90vh;
+    }
+</style>

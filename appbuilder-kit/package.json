@@ -38,6 +38,7 @@
 		"@tailwindcss/typography": "^0.5.2",
 		"proskomma": "^0.7.5",
 		"proskomma-freeze": "^0.7.0",
-		"proskomma-tools": "^0.0.5"
+		"proskomma-tools": "^0.0.5",
+		"svelte-split-pane": "^0.1.2"
 	}
 }

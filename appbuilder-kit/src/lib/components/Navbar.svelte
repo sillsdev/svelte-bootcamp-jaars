@@ -51,7 +51,7 @@
     }`);
 </script>
 
-<div class="dy-navbar bg-primary">
+<div class="dy-navbar bg-primary h-full">
     <div class="dy-navbar-start">
         <slot name="drawer-button"/>
         <!-- Translation/View Selector -->

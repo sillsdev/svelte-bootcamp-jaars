@@ -1,26 +1,31 @@
 <script lang="ts">
-    import SplitPane from "./SplitPane.svelte";
     import PkScriptureView from "./PKScriptureView.svelte";
     import { docSet, book, chapter} from "../data/stores";
+    import { HSplitPane } from "svelte-split-pane";
 
     let num = 50;
 </script>
 
+<div class="wrapper">
+    <HSplitPane>
+        <left slot="left" class="px-2 mx-auto overflow-y-hidden flex flex-col">
+            <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} />
+        </left>
+        <right slot="right" class="px-2 mx-auto overflow-y-hidden flex flex-col">
+            <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} />
+        </right>
+    </HSplitPane>
+</div>
 
-<SplitPane>
-	<svelte:fragment slot="left">
-		<div class="z-0"><PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} /></div>
-	</svelte:fragment>
-	<svelte:fragment slot="right">
-		<div class="z-0"><PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} /></div>
-	</svelte:fragment>
-</SplitPane>
-<!--<div class="flex flex-col sm:flex-row">
-    <div class="z-0"><PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} /></div>
-    <div class="dy-divider sm:dy-divider-horizontal z-10 max-h-screen">
-        <span class="dy-btn bg-gray-400 w-1">||</span>
-    </div>
-    <div class="z-10" style="width: {num}%">
-        <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} />
-    </div>
-</div>-->
+
+
+<style>
+    div.wrapper {
+        height: 100%;
+    }
+    left, right, top, down {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+</style>
