@@ -47,7 +47,7 @@
     }
 </script>
 
-<article class="prose overflow-y-auto w-full mx-auto grow">
+<article class="prose">
     {#await promise}
         <p>...waiting</p>
     {:then data}
