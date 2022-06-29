@@ -4,6 +4,7 @@
     export let docSet = "";
     export let book = "";
     export let chapter = "";
+    export let height;
 
     $: promise = queryPk(`{
         docSet(id:"${docSet}") {
@@ -47,7 +48,7 @@
     }
 </script>
 
-<article class="prose mx-auto max-h-full">
+<article class="prose mx-auto" bind:clientHeight="{height}">
     {#await promise}
         <p>...waiting</p>
     {:then data}
