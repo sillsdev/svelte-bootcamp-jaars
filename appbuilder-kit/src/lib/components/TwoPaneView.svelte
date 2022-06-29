@@ -6,29 +6,13 @@
     let num = 50;
 </script>
 
-<div class="wrapper">
+<div class="h-full">
     <HSplitPane>
-        <left slot="left" class="px-2 mx-auto overflow-y-hidden">
-            <div class="overflow-y-auto w-full">
+        <div slot="left" class="px-2 mx-auto max-h-full overflow-y-auto">
                 <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} />
-            </div>
-        </left>
-        <right slot="right" class="px-2 mx-auto overflow-y-hidden">
+        </div>
+        <div slot="right" class="px-2 mx-auto max-h-full overflow-y-auto">
             <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} />
-        </right>
+        </div>
     </HSplitPane>
 </div>
-
-
-
-<style>
-    div.wrapper {
-        height: 100%;
-    }
-    /*
-    left, right, top, down {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }*/
-</style>

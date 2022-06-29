@@ -47,7 +47,7 @@
     }
 </script>
 
-<article class="prose">
+<article class="prose mx-auto max-h-full">
     {#await promise}
         <p>...waiting</p>
     {:then data}

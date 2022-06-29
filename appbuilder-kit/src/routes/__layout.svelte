@@ -15,7 +15,7 @@
                 </label>
             </Navbar>
         </div>
-        <main class="p-2 flex-grow w-full overflow-y-auto">
+        <main class="p-2 w-full overflow-y-auto">
             <slot></slot>
         </main>
     </div>
