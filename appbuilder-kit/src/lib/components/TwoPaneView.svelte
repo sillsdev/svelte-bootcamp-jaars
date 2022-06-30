@@ -5,7 +5,7 @@
 </script>
 
 <div class="h-full hidden sm:block">
-    <HorizontalPanes />
+    <HorizontalPanes numPanes={4}/>
 </div>
 <div class="h-full sm:hidden">
     <VerticalPanes />

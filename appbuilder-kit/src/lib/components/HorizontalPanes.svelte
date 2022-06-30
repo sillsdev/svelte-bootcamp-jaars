@@ -3,6 +3,7 @@
     import { docSet, book, chapter} from "../data/stores";
     import { HSplitPane } from "svelte-split-pane";
 
+    export let numPanes = 2;
     let heights: number[] = [];
     let scrolls: number[] = [0, 0];
     let slots: any[] = [];
@@ -33,8 +34,11 @@
     </pre>
 -->
 
-<div class="h-full">
-    <HSplitPane>
+<div class="h-full overflow-y-hidden">
+    <svelte:component this={HSplitPane} 
+        leftPaneSize={(100/numPanes).toFixed(2)+"%"}
+        rightPaneSize={(100 - 100/numPanes).toFixed(2)+"%"}
+    >
         <div slot="left" 
             class="px-4 mx-auto max-h-full overflow-y-auto" 
             bind:this={slots[0]}
@@ -47,7 +51,11 @@
             bind:this={slots[1]}
             bind:offsetHeight="{offs[1]}"
             on:scroll={() => handleScroll(1)}>
-            <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} bind:height={heights[1]}/>
+            {#if numPanes > 2}
+                <svelte:self numPanes={numPanes -1} />
+            {:else}
+                <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} bind:height={heights[1]}/>
+            {/if}
         </div>
-    </HSplitPane>
+    </svelte:component>
 </div>
