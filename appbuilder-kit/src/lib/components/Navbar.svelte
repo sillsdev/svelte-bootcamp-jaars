@@ -10,7 +10,7 @@
     import DropdownIcon from "$lib/icons/DropdownIcon.svelte";
     import TextAppearanceIcon from "$lib/icons/TextAppearanceIcon.svelte";
     import SinglePaneIcon from "$lib/icons/SinglePaneIcon.svelte";
-    import TwoPaneIcon from "$lib/icons/TwoPaneIcon.svelte";
+    import SideBySideIcon from "$lib/icons/SideBySideIcon.svelte";
     import VerseByVerseIcon from "$lib/icons/VerseByVerseIcon.svelte";
     
     /*
@@ -63,7 +63,7 @@
                     "Single Pane":{tab:{component:SinglePaneIcon},
                         component:SelectGrid,props:{
                         options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
-                    "Two Panes":{tab:{component:TwoPaneIcon},
+                    "Two Panes":{tab:{component:SideBySideIcon},
                         component:SelectGrid,props:{
                         options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
                     "Verse by Verse":{tab:{component:VerseByVerseIcon},

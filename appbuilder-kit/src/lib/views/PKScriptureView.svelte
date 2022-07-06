@@ -4,7 +4,7 @@
     export let docSet = "";
     export let book = "";
     export let chapter = "";
-    export let height;
+    //export let height;
 
     $: promise = queryPk(`{
         docSet(id:"${docSet}") {
@@ -18,16 +18,23 @@
                 }
             }
         }
-    }`);
+    }`, (r) => console.log("query finished: "+r));
 
+    /**
+    * @param {string} data
+    */
     function renderChapter(data) {
-        const blocks = JSON.parse(data).data.docSet.document.mainSequence.blocks;
+        const blocks = JSON.parse(data).data.docSet?.document?.mainSequence.blocks;
+        if(!blocks) return "waiting on Proskomma...";
         let rendered = "";
         for(let i = 0; i < blocks.length; i++)
             rendered += `<div class="${i === 0?"m":"p"}">${renderBlock(blocks[i])}</div>`
         return rendered;
     }
-
+    
+    /**
+    * @param {{ items: any[]; }} block
+    */
     function renderBlock(block) {
         let rendered = "";
         for(let i = 0; i < block.items.length; i++) {
@@ -48,11 +55,11 @@
     }
 </script>
 
-<article class="prose mx-auto" bind:clientHeight="{height}">
+<article class="prose mx-auto">
     {#await promise}
         <p>...waiting</p>
     {:then data}
-        <h1>{JSON.parse(data).data.docSet.document.title}</h1>
+        <h1>{JSON.parse(data).data.docSet?.document?.title}</h1>
         <h2>Chapter: {chapter}</h2>
         {@html renderChapter(data)}
     {:catch error}

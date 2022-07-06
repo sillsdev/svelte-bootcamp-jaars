@@ -1,53 +1,127 @@
-<script lang="ts">
-    import PkScriptureView from "./PKScriptureView.svelte";
-    import { docSet, book, chapter} from "../data/stores";
-    import { VSplitPane } from "svelte-split-pane";
-
-    let heights: number[] = [];
-    let scrolls: number[] = [0, 0];
-    let slots: any[] = [];
-    let offs: number[] = [];
-    $: max = [heights[0]-offs[0], heights[1]-offs[1]]
-
-    function handleScroll(index: number) {
-        scrolls[index] = slots[index].scrollTop;
-        scrolls[1-index] = scrolls[index]*((max[1-index])/(max[index]));
-        if(Math.abs(scrolls[1-index] - slots[1-index].scrollTop) > 1) {
-            slots[1-index].scrollTop = scrolls[1-index];
-        }
+<!--
+@component
+based on `VSplitPane` from [svelte-split-pane](https://github.com/Readiz/svelte-split-pane).  
+lightly modified because touch was not working.
+-->
+<script>
+    import { onMount, onDestroy } from 'svelte';
+    /**
+    * @type {HTMLDivElement}
+    */
+    let separator;
+    export let updateCallback = () => {
+        // do nothing
+        return;
     }
+
+    /**
+    * @type {{ e: any; firstHeight: any; secondHeight: any; offsetTop: any; offsetLeft?: number; }}
+    */
+    let md;
+    const onPointerdown = (/** @type {PointerEvent} */e) => {
+        if (e.cancelable) e.preventDefault();
+        //if (e.button !== 0) return;
+        md = {e,
+            offsetLeft:  separator.offsetLeft,
+            offsetTop:   separator.offsetTop,
+            firstHeight:  top.offsetHeight,
+            secondHeight: down.offsetHeight
+        };
+        window.addEventListener('pointermove', onPointermove);
+        window.addEventListener('pointerup', onPointerup);
+    };
+    const onPointermove = (/** @type {PointerEvent} */e) => {
+        if (e.cancelable) e.preventDefault();
+        //if (e.button !== 0) return;
+        var delta = {x: e.clientX - md.e.clientX,
+                y: e.clientY - md.e.clientY};
+        // Prevent negative-sized elements
+        delta.y = Math.min(Math.max(delta.y, -md.firstHeight),
+                    md.secondHeight);
+
+        separator.style.top = md.offsetTop + delta.y + "px";
+        top.style.height = (md.firstHeight + delta.y) + "px";
+        down.style.height = (md.secondHeight - delta.y) + "px";
+        updateCallback();
+    }
+    const onPointerup = (/** @type {PointerEvent} */ e) => {
+        if (e && e.cancelable) e.preventDefault()
+        updateCallback();
+        window.removeEventListener('pointermove', onPointermove);
+        window.removeEventListener('pointerup', onPointerup);
+    }
+    function resetSize() {
+        if (top) top.removeAttribute('style');
+        if (down) down.removeAttribute('style');
+        if (separator) separator.removeAttribute('style');
+    }
+    function onResize() {
+        onPointerup();
+        resetSize();
+    }
+    onMount(() => {
+        window.addEventListener('resize', onResize);
+    });
+    onDestroy(() => {
+        window.removeEventListener('resize', onResize);
+    });
+    /** @type {HTMLDivElement}*/let top;
+    /** @type {HTMLDivElement}*/let down;
+    export let topPanelSize = '50%';
+    export let downPanelSize = '50%';
+    export let minTopPaneSize = '0';
+    export let minDownPaneSize = '0';
+    $: topPanelSize && resetSize();
+    $: downPanelSize && resetSize();
 </script>
 
-<!--
-    <pre>
-    const
-    h: {heights}
-    o: {offs}
-    m: {max} h-o
-    var
-    s: {scrolls.map(s => s.toFixed(2))}
-    d: {scrolls.map((s,i) => (heights[i] - s).toFixed(2))} h-s [h, o]
-    l: {scrolls.map((s,i) => (heights[i] - s- offs[i]).toFixed(2))} m-s [m, 0]
-    c0: {(scrolls[1]*((max[0])/(max[1]))).toFixed(2)}, {((scrolls[0] - scrolls[1]*((max[0])/(max[1]))))}
-    c1: {(scrolls[0]*((max[1])/(max[0]))).toFixed(2)}, {((scrolls[1] - scrolls[0]*((max[1])/(max[0]))))}
-    </pre>
--->
-
-<div class="h-full">
-    <VSplitPane>
-        <div slot="top" 
-            class="p-4 mx-auto max-h-full overflow-y-auto" 
-            bind:this={slots[0]}
-            bind:offsetHeight="{offs[0]}"
-            on:scroll={() => handleScroll(0)}>
-                <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter}  bind:height={heights[0]}/>
-        </div>
-        <div slot="down" 
-            class="p-4 mx-auto max-h-full overflow-y-auto"
-            bind:this={slots[1]}
-            bind:offsetHeight="{offs[1]}"
-            on:scroll={() => handleScroll(1)}>
-            <PkScriptureView docSet={$docSet} book={$book} chapter={$chapter} bind:height={heights[1]}/>
-        </div>
-    </VSplitPane>
+<div class="wrapper" style="--top-panel-size: {topPanelSize}; --down-panel-size: {downPanelSize}; --min-top-panel-size:{minTopPaneSize}; --min-down-panel-size: {minDownPaneSize};">
+    <div bind:this={top} class="top">
+        <slot name="top">
+            <div style="background-color: red;">
+                Top Contents goes here...
+            </div>
+        </slot>
+    </div>
+    <div bind:this={separator} class="separator" on:pointerdown={onPointerdown}>
+    </div>
+    <div bind:this={down} class="down">
+        <slot name="down">
+            <div style="background-color: yellow;">
+                Down Contents goes here...
+            </div>
+        </slot>
+    </div>
 </div>
+
+<style>
+    div.wrapper {
+        width: 100%;
+        height: 100%;
+        /* background-color: yellow; */
+        display: flex;
+        overflow: auto;
+        flex-direction: column;
+    }
+    div.separator {
+        cursor: row-resize;
+        width: 100%;
+        height: 8px;
+        margin-top: -2px;
+        z-index: 1;
+        background-color: #aaa;
+        touch-action: none;
+    }
+    div.top {
+        height: var(--top-panel-size);
+        min-height: var(--min-top-panel-size);
+        width: 100%;
+        overflow: auto;
+    }
+    div.down {
+        height: var(--down-panel-size);
+        min-height: var(--min-down-panel-size);
+        width: 100%;
+        overflow: auto;
+    }
+</style>

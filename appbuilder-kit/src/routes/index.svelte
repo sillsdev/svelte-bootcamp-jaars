@@ -1,6 +1,6 @@
 <script lang="ts">
-    import ScriptureView from "$lib/components/ScriptureView.svelte";
-    import TwoPaneView from "$lib/components/TwoPaneView.svelte";
+    import ScriptureView from "$lib/views/ScriptureView.svelte";
+    import SideBySideView from "$lib/views/SideBySideView.svelte";
     import { viewMode } from "$lib/data/stores";
     let text: App.BibleText = {
         title:"The Good News According to John",
@@ -39,7 +39,7 @@
 </script>
 
 {#if $viewMode === "Two Panes"}
-    <TwoPaneView />
+    <SideBySideView />
 {:else}
     <ScriptureView {text}/>
 {/if}

@@ -1,6 +1,6 @@
 <script>
     import { page } from '$app/stores';
-    import PkScriptureView from '$lib/components/PKScriptureView.svelte';
+    import PkScriptureView from '$lib/views/PKScriptureView.svelte';
     import { docSet, book, chapter } from '$lib/data/stores';
 
     $: (() => {
