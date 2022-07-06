@@ -38,7 +38,7 @@
     };
 </script>
 
-{#if $viewMode === "Two Panes"}
+{#if $viewMode === "Side By Side"}
     <SideBySideView />
 {:else}
     <ScriptureView {text}/>

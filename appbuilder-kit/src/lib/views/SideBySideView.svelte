@@ -3,6 +3,7 @@
     import VerticalPanes from "../components/VerticalPanes.svelte";
 
     import PkScriptureView from "./PKScriptureView.svelte";
+    import SearchView from "./SearchView.svelte";
 
     import { docSet, book, chapter } from "../data/stores";
 
@@ -10,7 +11,7 @@
         {component: PkScriptureView, props:{docSet: $docSet, book: $book, chapter: $chapter}},
         {component: PkScriptureView, props:{docSet: $docSet, book: $book, chapter: $chapter}},
         {component: PkScriptureView, props:{docSet: $docSet, book: $book, chapter: $chapter}},
-        {component: PkScriptureView, props:{docSet: $docSet, book: $book, chapter: $chapter}}
+        {component: SearchView, props:{}}
     ];
 </script>
 

@@ -11,7 +11,7 @@
     <div class="flex flex-col justify-center">
         <div class="navbar">
             <Navbar>
-                <label for="{drawerName}" slot="drawer-button" class="dy-btn dy-btn-ghost p-1 dy-drawer-button {$viewMode === "Two Panes"? "xl:hidden":"lg:hidden"}">
+                <label for="{drawerName}" slot="drawer-button" class="dy-btn dy-btn-ghost p-1 dy-drawer-button {$viewMode === "Side By Side"? "":"lg:hidden"}">
                     <HamburgerIcon/>
                 </label>
             </Navbar>
