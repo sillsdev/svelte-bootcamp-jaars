@@ -11,7 +11,7 @@
     }
 </script>
 
-<div class="tabs {colorClass}">
+<div class="dy-tabs {colorClass}">
     {#each Object.keys(options) as opt}
         <!-- svelte-ignore a11y-missing-attribute -->
         <a on:click={() => active = opt}

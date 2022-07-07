@@ -4,6 +4,7 @@
     import Dropdown from "./Dropdown.svelte";
     import SelectGrid from "./SelectGrid.svelte";
     import TabsMenu from "./TabsMenu.svelte";
+    import LayoutOptions from "./LayoutOptions.svelte";
     //Icons
     import MuteIcon from "$lib/icons/MuteIcon.svelte";
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
@@ -63,14 +64,11 @@
                 {#await promise then res}
                 <TabsMenu options={{
                     "Single Pane":{tab:{component:SinglePaneIcon},
-                        component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
-                    "Two Panes":{tab:{component:SideBySideIcon},
-                        component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSets.map(ds => ds.id)}},
-                    "Verse by Verse":{tab:{component:VerseByVerseIcon},
-                        component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSets.map(ds => ds.id)}}
+                        component:LayoutOptions,props:{layoutOption:"Single Pane"}},
+                    "Side By Side":{tab:{component:SideBySideIcon},
+                        component:LayoutOptions,props:{layoutOption:"Side By Side"}},
+                    "Verse By Verse":{tab:{component:VerseByVerseIcon},
+                        component:LayoutOptions,props:{layoutOption:"Verse By Verse"}}
                 }} active="Single Pane"/>
                 {/await}
             </svelte:fragment>
