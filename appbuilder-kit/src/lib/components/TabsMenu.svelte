@@ -5,6 +5,9 @@
 
     function handleMenuaction(e: CustomEvent) {
         console.log(e.detail.text);
+        if(options[active].handler !== undefined) {
+            options[active].handler(e);
+        }
     }
 </script>
 

@@ -33,7 +33,8 @@ declare namespace App {
 			tab?:{
 				component: any;
 				props?: any;
-			},
+			};
+			handler?: function;
 			component: any;
 			props: any;
 		}
