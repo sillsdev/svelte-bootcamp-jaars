@@ -58,7 +58,6 @@ heavily modified because it did not support more than 2 panes and touch was not 
     >
     {#each panes as p, i}
         <div class="pane" style="width: {widths[i]}%" bind:this={paneElems[i]}>
-            {(console.log(p.props), '')}
             <svelte:component this={p.component} {...p.props} />
         </div>
         {#if i !== panes.length - 1}

@@ -18,7 +18,7 @@
                 }
             }
         }
-    }`, (r) => console.log("query finished: "+r));
+    }`);
 
     /**
     * @param {string} data
