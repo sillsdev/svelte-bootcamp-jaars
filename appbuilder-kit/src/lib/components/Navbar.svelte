@@ -1,6 +1,6 @@
 <script lang="ts">
     import { queryPk } from '../scripts/queryPk';
-    import { nextBook, nextDocSet, nextChapter, nextNumVerses } from '$lib/data/stores';
+    import { nextDocSet, nextBook, nextChapter, nextNumVerses } from '$lib/data/stores';
     import Dropdown from "./Dropdown.svelte";
     import SelectGrid from "./SelectGrid.svelte";
     import TabsMenu from "./TabsMenu.svelte";
@@ -33,6 +33,8 @@
             21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
             41,42,43,44,45,46,47,48,49,50,51];
     */
+
+    let nextVerse = "";
     
     $: promise = queryPk(`{
         docSets {
@@ -82,11 +84,14 @@
                 {#await promise then res}
                 <TabsMenu options={{
                     "Book":{component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSet.documents.map(d => d.bookCode)}},
+                        options:JSON.parse(res).data.docSet.documents.map(d => d.bookCode)},
+                        handler: (e) => $nextBook = e.detail.text},
                     "Chapter":{component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSet.document.cIndexes.map(c => c.chapter)}},
+                        options:JSON.parse(res).data.docSet.document.cIndexes.map(c => c.chapter)},
+                        handler: (e) => $nextChapter = e.detail.text},
                     "Verse":{component:SelectGrid,props:{
-                        options:Array.from(Array($nextNumVerses), (_, index) => index + 1)}}
+                        options:Array.from(Array($nextNumVerses), (_, index) => index + 1)},
+                        handler: (e) => nextVerse = e.detail.text}
                 }} active="Book"/>
                 {/await}
             </svelte:fragment>
@@ -100,9 +105,11 @@
                 {#await promise then res}
                 <TabsMenu options={{
                     "Chapter":{component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSet.document.cIndexes.map(c => c.chapter)}},
+                        options:JSON.parse(res).data.docSet.document.cIndexes.map(c => c.chapter)},
+                        handler: (e) => $nextChapter = e.detail.text},
                     "Verse":{component:SelectGrid,props:{
-                        options:Array.from(Array($nextNumVerses), (_, index) => index + 1)}}
+                        options:Array.from(Array($nextNumVerses), (_, index) => index + 1)},
+                        handler: (e) => nextVerse = e.detail.text}
                 }} active="Chapter"/>
                 {/await}
             </svelte:fragment>
