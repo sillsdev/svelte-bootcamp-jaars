@@ -42,6 +42,7 @@
     }
 </script>
 
+<main class="mx-1">
 <h1>Search</h1>
 <form>
     <div class="dy-form-control">
@@ -69,3 +70,4 @@
         <p>{p.text}</p>
     {/each}
 {/await}
+</main>
