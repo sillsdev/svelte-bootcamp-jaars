@@ -1,15 +1,15 @@
 <script>
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
     import { queryPk } from "$lib/scripts/queryPk";
-    import { nextDocSet } from "$lib/data/stores";
+    import { docSets, viewMode } from "$lib/data/stores";
 
     export let layoutOption = "";
 
-    let docSets = [""];
+    let docSetList = [""];
 
     onMount(async () => {
         const data = JSON.parse(await queryPk("{docSets{id}}")).data;
-        docSets = data.docSets.map(d => d.id);
+        docSetList = data.docSets.map(d => d.id);
     })
 </script>
 
@@ -17,30 +17,30 @@
 {#if layoutOption === "Side By Side"}
     <p><strong>Side By Side</strong></p>
     <ul class="dy-menu mx-auto">
-        {#each docSets as d}
+        {#each docSetList as d}
             <!-- svelte-ignore a11y-missing-attribute -->
-            <li><a on:click={() => $nextDocSet = d}
-                class="{$nextDocSet === d? "dy-active":""}">{d}
+            <li><a on:click={() => $docSets["next"] = d}
+                class="{$docSets["next"] === d? "dy-active":""}">{d}
             </a></li>
         {/each}
     </ul>
 {:else if layoutOption === "Verse By Verse"}
-<p><strong>Verse By Verse</strong></p>
+    <p><strong>Verse By Verse</strong></p>
     <ul class="dy-menu mx-auto">
-        {#each docSets as d}
+        {#each docSetList as d}
             <!-- svelte-ignore a11y-missing-attribute -->
-            <li><a on:click={() => $nextDocSet = d}
-                class="{$nextDocSet === d? "dy-active":""}">{d}
+            <li><a on:click={() => $docSets["next"] = d}
+                class="{$docSets["next"] === d? "dy-active":""}">{d}
             </a></li>
         {/each}
     </ul>
 {:else if layoutOption === "Single Pane"}
     <p><strong>Single Pane</strong></p>
     <ul class="dy-menu mx-auto">
-        {#each docSets as d}
+        {#each docSetList as d}
             <!-- svelte-ignore a11y-missing-attribute -->
-            <li><a on:click={() => $nextDocSet = d}
-                class="{$nextDocSet === d? "dy-active":""}">{d}
+            <li><a on:click={() => $docSets["next"] = d}
+                class="{$docSets["next"] === d? "dy-active":""}">{d}
             </a></li>
         {/each}
     </ul>

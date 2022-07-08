@@ -17,9 +17,8 @@ export const docSetStore = () => {
         });
     })
 
-    return { set: internal.set, subscribe: external.subscribe }
-};
-
+    return { subscribe: external.subscribe, set: internal.set }
+}
 export const bookStore = (docSet) => {
     const internal = writable("");
     const external = derived([internal, docSet], ([$internal, $docSet], set) => {
@@ -50,9 +49,8 @@ export const bookStore = (docSet) => {
         });
     })
 
-    return { set: internal.set, subscribe: external.subscribe }
-};
-
+    return { subscribe: external.subscribe, set: internal.set }
+}
 export const chapterStore = (docSet, book) => {
     const internal = writable("1");
     const external = derived([internal, docSet, book], ([$internal, $docSet, $book], set) => {
@@ -81,8 +79,7 @@ export const chapterStore = (docSet, book) => {
     })
 
     return { set: internal.set, subscribe: external.subscribe }
-};
-
+}
 export const numVersesStore = (docSet, book, chapter) => {
     return derived(
         [docSet, book, chapter],
@@ -105,4 +102,4 @@ export const numVersesStore = (docSet, book, chapter) => {
             });
         }
     );
-};
+}
