@@ -1,6 +1,6 @@
 <script lang="ts">
     import SearchIcon from "$lib/icons/SearchIcon.svelte";
-    import { docSet } from "$lib/data/stores";
+    import { refs } from "$lib/data/stores";
     import { queryPk } from "$lib/scripts/queryPk";
     import { postQueries, queries } from "proskomma-tools";
 
@@ -17,7 +17,7 @@
             data: JSON.parse(await queryPk(
                 queries.searchForBookCodesQuery({
                     text: searchText,
-                    docSetId: $docSet
+                    docSetId: $refs.default.docSet
                 })
             )).data
         })
@@ -30,7 +30,7 @@
                     data: JSON.parse(await queryPk(
                         queries.searchForPassagesQuery({
                             text: searchText,
-                            docSetId: $docSet,
+                            docSetId: $refs.default.docSet,
                             bookCode: book
                         })
                     )).data

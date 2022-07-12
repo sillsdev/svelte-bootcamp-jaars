@@ -1,16 +1,17 @@
 <script>
     import { onMount, onDestroy } from "svelte";
     import { queryPk } from "$lib/scripts/queryPk";
-    import { docSets, viewMode } from "$lib/data/stores";
+    import { refs, viewMode } from "$lib/data/stores";
 
     export let layoutOption = "";
 
     let docSetList = [""];
-
+    const removeKey = refs.addKey("next")
     onMount(async () => {
         const data = JSON.parse(await queryPk("{docSets{id}}")).data;
         docSetList = data.docSets.map(d => d.id);
     })
+    onDestroy(removeKey)
 </script>
 
 <div class="w-60 p-2">
@@ -19,8 +20,8 @@
     <ul class="dy-menu mx-auto">
         {#each docSetList as d}
             <!-- svelte-ignore a11y-missing-attribute -->
-            <li><a on:click={() => $docSets["next"] = d}
-                class="{$docSets["next"] === d? "dy-active":""}">{d}
+            <li><a on:click={() => $refs["next"].docSet = d}
+                class="{$refs["next"].docSet === d? "dy-active":""}">{d}
             </a></li>
         {/each}
     </ul>
@@ -29,8 +30,8 @@
     <ul class="dy-menu mx-auto">
         {#each docSetList as d}
             <!-- svelte-ignore a11y-missing-attribute -->
-            <li><a on:click={() => $docSets["next"] = d}
-                class="{$docSets["next"] === d? "dy-active":""}">{d}
+            <li><a on:click={() => $refs["next"].docSet = d}
+                class="{$refs["next"].docSet === d? "dy-active":""}">{d}
             </a></li>
         {/each}
     </ul>
@@ -39,8 +40,8 @@
     <ul class="dy-menu mx-auto">
         {#each docSetList as d}
             <!-- svelte-ignore a11y-missing-attribute -->
-            <li><a on:click={() => $docSets["next"] = d}
-                class="{$docSets["next"] === d? "dy-active":""}">{d}
+            <li><a on:click={() => $refs["next"].docSet = d}
+                class="{$refs["next"].docSet === d? "dy-active":""}">{d}
             </a></li>
         {/each}
     </ul>

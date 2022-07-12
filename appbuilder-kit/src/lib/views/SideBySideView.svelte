@@ -5,12 +5,24 @@
     import PkScriptureView from "./PKScriptureView.svelte";
     import SearchView from "./SearchView.svelte";
 
-    import { docSet, book, chapter } from "../data/stores";
+    import { refs } from "../data/stores";
 
     $: panes = [
-        {component: PkScriptureView, props:{docSet: $docSet, book: $book, chapter: $chapter}},
-        {component: PkScriptureView, props:{docSet: $docSet, book: $book, chapter: $chapter}},
-        {component: PkScriptureView, props:{docSet: $docSet, book: $book, chapter: $chapter}},
+        {component: PkScriptureView, props:{
+            docSet: $refs.default.docSet, 
+            book: $refs.default.book, 
+            chapter: $refs.default.chapter
+        }},
+        {component: PkScriptureView, props:{
+            docSet: $refs.default.docSet, 
+            book: $refs.default.book, 
+            chapter: $refs.default.chapter
+        }},
+        {component: PkScriptureView, props:{
+            docSet: $refs.default.docSet, 
+            book: $refs.default.book, 
+            chapter: $refs.default.chapter
+        }},
         {component: SearchView, props:{}}
     ];
 </script>
