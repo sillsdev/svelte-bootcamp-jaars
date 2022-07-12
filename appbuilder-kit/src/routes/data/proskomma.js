@@ -23,10 +23,8 @@ const pk = (() => {
     }
 
     const query = async (q,cb) => {
-        await memoInit();
-        let j = await _val.gqlQuery(q);
-        if(cb) { cb(j); }
-        return j;
+        memoInit();
+        return _val.gqlQuery(q, cb);
     };
 
     const gqlQuery = async (q,cb) => { query(q,cb) }

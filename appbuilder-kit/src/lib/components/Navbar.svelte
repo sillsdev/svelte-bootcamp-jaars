@@ -2,6 +2,7 @@
     import { onDestroy } from 'svelte'
     import { queryPk } from '../scripts/queryPk';
     import { refs } from '$lib/data/stores';
+    import { catalog } from '$lib/data/constants'; 
     import Dropdown from "./Dropdown.svelte";
     import SelectGrid from "./SelectGrid.svelte";
     import TabsMenu from "./TabsMenu.svelte";
@@ -36,26 +37,13 @@
             41,42,43,44,45,46,47,48,49,50,51];
     */
 
-    let nextVerse = "";
-    const removeKey = refs.addKey("next")
-    
-    $: promise = queryPk(`{
-        docSets {
-            id
-        }
-        docSet(id: "${$refs["next"].docSet}") {
-            documents {
-                bookCode:header(id: "bookCode")
-            }
-            document(bookCode:"${$refs["next"].book}"){
-                cIndexes {
-                    chapter
-                }
-            }
-        }
-    }`);
-
-    onDestroy(removeKey)
+    const docSets = catalog.map(ds => ds.id)
+    let ds = docSets[0]
+    $: books = catalog.filter(d => d.id === ds)[0].documents
+    $: b = books[0].bookCode
+    $: chapters = books.filter(d => d.bookCode === b)[0].versesByChapters
+    $: c = Object.keys(chapters)[0]
+    let v = ""
 </script>
 
 <div class="dy-navbar bg-primary h-full">
@@ -63,9 +51,8 @@
         <slot name="drawer-button"/>
         <!-- Translation/View Selector -->
         <Dropdown>
-            <svelte:fragment slot="label">{$refs["next"].docSet} <DropdownIcon/></svelte:fragment>
+            <svelte:fragment slot="label">{ds} <DropdownIcon/></svelte:fragment>
             <svelte:fragment slot="content">
-                {#await promise then res}
                 <TabsMenu options={{
                     "Single Pane":{tab:{component:SinglePaneIcon},
                         component:LayoutOptions,props:{layoutOption:"Single Pane"}},
@@ -74,46 +61,41 @@
                     "Verse By Verse":{tab:{component:VerseByVerseIcon},
                         component:LayoutOptions,props:{layoutOption:"Verse By Verse"}}
                 }} active="Single Pane"/>
-                {/await}
             </svelte:fragment>
         </Dropdown>
         <!-- Book Selector -->
         <Dropdown>
             <svelte:fragment slot="label">
-                {$refs["next"].book} <DropdownIcon/>
+                {b} <DropdownIcon/>
             </svelte:fragment>
             <svelte:fragment slot="content">
-                {#await promise then res}
                 <TabsMenu options={{
                     "Book":{component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSet.documents.map(d => d.bookCode)},
-                        handler: (e) => $refs["next"].book = e.detail.text},
+                        options:books.map(d => d.bookCode)},
+                        handler: (e) => b = e.detail.text},
                     "Chapter":{component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSet.document.cIndexes.map(c => c.chapter)},
-                        handler: (e) => $refs["next"].chapter = e.detail.text},
+                        options:Object.keys(chapters)},
+                        handler: (e) => c = e.detail.text},
                     "Verse":{component:SelectGrid,props:{
-                        options:Array.from(Array($refs["next"].numVerses), (_, index) => index + 1)},
-                        handler: (e) => nextVerse = e.detail.text}
+                        options:Object.keys(chapters[c])},
+                        handler: (e) => v = e.detail.text}
                 }} active="Book"/>
-                {/await}
             </svelte:fragment>
         </Dropdown>
         <!-- Chapter Selector -->
         <Dropdown>
             <svelte:fragment slot="label">
-                {$refs["next"].chapter} <DropdownIcon/>
+                {c} <DropdownIcon/>
             </svelte:fragment>
             <svelte:fragment slot="content">
-                {#await promise then res}
                 <TabsMenu options={{
                     "Chapter":{component:SelectGrid,props:{
-                        options:JSON.parse(res).data.docSet.document.cIndexes.map(c => c.chapter)},
-                        handler: (e) => $refs["next"].chapter = e.detail.text},
+                        options:Object.keys(chapters)},
+                        handler: (e) => c = e.detail.text},
                     "Verse":{component:SelectGrid,props:{
-                        options:Array.from(Array($refs["next"].numVerses), (_, index) => index + 1)},
-                        handler: (e) => nextVerse = e.detail.text}
+                        options:Object.keys(chapters[c])},
+                        handler: (e) => v = e.detail.text}
                 }} active="Chapter"/>
-                {/await}
             </svelte:fragment>
         </Dropdown>
     </div>

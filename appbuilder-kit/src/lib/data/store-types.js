@@ -8,14 +8,14 @@ export const referenceStore = (/**@type{any}*/init) => {
         const original = get(internal)
         const docSets = catalog.map(ds => ds.id)
         if(!docSet || !docSets.includes(docSet)) docSet = docSets.includes(original.ds)? original.ds : docSets[0]
-        
-        const books = catalog.filter(ds => docSet === ds.id).documents.map(b => b.bookCode)
+
+        const books = catalog.find(ds => docSet === ds.id).documents.map(b => b.bookCode)
         if(!book || !books.includes(book)) book = books.includes(original.b)? original.b : books[0]
 
-        const versesByChapters = catalog.filter(ds => docSet === ds.id).documents.filter(b => book === b.bookCode).versesByChapters
+        const versesByChapters = catalog.find(ds => docSet === ds.id).documents.find(b => book === b.bookCode).versesByChapters
         if(!chapter || !Object.keys(versesByChapters).includes(chapter))
             chapter = Object.keys(versesByChapters).includes(original.c)? original.c : "1"
-        
+
         internal.set({
             ds: docSet,
             b: book,
@@ -37,9 +37,9 @@ export const referenceStore = (/**@type{any}*/init) => {
 }
 
 export const groupStore = (/**@type{any}*/groupType,/**@type{any}*/props) => {
-    /**@type{any}*/const stores = {default: groupType(props)}
-    /**@type{any}*/const vals   = {default: undefined}
-    /**@type{any}*/const unsubs = {default: stores.default.subscribe(v => vals.default = v)}
+    /**@type{any}*/const stores = {"default": groupType(props)}
+    /**@type{any}*/const vals   = {"default": undefined}
+    /**@type{any}*/const unsubs = {"default": stores.default.subscribe(v => vals["default"] = v)}
     /**@type{any[]}*/let subs = [];
     let subGroupCounts = {}
 
@@ -50,15 +50,13 @@ export const groupStore = (/**@type{any}*/groupType,/**@type{any}*/props) => {
     }
 
     const set = ({key, val}) => {
-        if(val === undefined) {
-            stores[key] = groupType(props)
-            unsubs[key] = stores[key].subscribe(v => vals[key] = v)
-        }
+        stores[key].set(val)
         subs.forEach(sub => sub(vals)) 
     }
     const addKey = (/**@type{any}*/key) => {
         if(stores[key] === undefined) {
-            set({key: key, val: undefined})
+            stores[key] = groupType(props)
+            unsubs[key] = stores[key].subscribe(v => vals[key] = v)
             subGroupCounts[key] = 0
         }
         subGroupCounts[key] += 1;
