@@ -2,6 +2,7 @@
     import ScriptureView from "$lib/views/ScriptureView.svelte";
     import SideBySideView from "$lib/views/SideBySideView.svelte";
     import { viewMode } from "$lib/data/stores";
+    import PkScriptureView from "$lib/views/PKScriptureView.svelte";
     let text: App.BibleText = {
         title:"The Good News According to John",
         book:"John",
@@ -41,5 +42,5 @@
 {#if $viewMode === "Side By Side"}
     <SideBySideView />
 {:else}
-    <ScriptureView {text}/>
+    <PkScriptureView />
 {/if}

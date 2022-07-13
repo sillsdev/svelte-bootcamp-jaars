@@ -1,7 +1,4 @@
 <script lang="ts">
-    import { onDestroy } from 'svelte'
-    import { queryPk } from '../scripts/queryPk';
-    import { refs } from '$lib/data/stores';
     import { catalog } from '$lib/data/constants'; 
     import Dropdown from "./Dropdown.svelte";
     import SelectGrid from "./SelectGrid.svelte";
@@ -39,9 +36,9 @@
 
     const docSets = catalog.map(ds => ds.id)
     let ds = docSets[0]
-    $: books = catalog.filter(d => d.id === ds)[0].documents
+    $: books = catalog.find(d => d.id === ds).documents
     $: b = books[0].bookCode
-    $: chapters = books.filter(d => d.bookCode === b)[0].versesByChapters
+    $: chapters = books.find(d => d.bookCode === b).versesByChapters
     $: c = Object.keys(chapters)[0]
     let v = ""
 </script>

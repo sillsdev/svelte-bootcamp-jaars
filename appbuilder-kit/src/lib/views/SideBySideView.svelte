@@ -1,7 +1,6 @@
 <script lang="ts">
     import HorizontalPanes from "../components/HorizontalPanes.svelte";
     import VerticalPanes from "../components/VerticalPanes.svelte";
-
     import PkScriptureView from "./PKScriptureView.svelte";
     import SearchView from "./SearchView.svelte";
 
@@ -9,19 +8,13 @@
 
     $: panes = [
         {component: PkScriptureView, props:{
-            docSet: $refs.default.docSet, 
-            book: $refs.default.book, 
-            chapter: $refs.default.chapter
+            refKey: "pane 1"
         }},
         {component: PkScriptureView, props:{
-            docSet: $refs.default.docSet, 
-            book: $refs.default.book, 
-            chapter: $refs.default.chapter
+            refKey: "pane 2"
         }},
         {component: PkScriptureView, props:{
-            docSet: $refs.default.docSet, 
-            book: $refs.default.book, 
-            chapter: $refs.default.chapter
+            refKey: "pane 3"
         }},
         {component: SearchView, props:{}}
     ];

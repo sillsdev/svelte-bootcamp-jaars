@@ -31,8 +31,8 @@ export const referenceStore = () => {
         chapter: $internal.c,
         chapterVerses: `${$internal.c}:1-${$internal.n}`,
         numVerses: $internal.n,
-        title: catalog.filter(ds => ds.id === $internal.ds)
-            .documents?.filter(b => b.bookCode === $internal.b).toc
+        title: catalog.find(ds => ds.id === $internal.ds)
+            .documents.find(b => b.bookCode === $internal.b).toc
     }))
     return {subscribe: external.subscribe, set: setInternal}
 }
@@ -55,6 +55,7 @@ export const groupStore = (/**@type{any}*/groupType,/**@type{any}*/props) => {
         subs.forEach(sub => sub(vals)) 
     }
     const addKey = (/**@type{any}*/key) => {
+        if(key === "default") return () => {}
         if(stores[key] === undefined) {
             stores[key] = groupType(props)
             unsubs[key] = stores[key].subscribe(v => vals[key] = v)

@@ -1,16 +1,45 @@
 <script>
     import { queryPk } from '$lib/scripts/queryPk';
+    import { onDestroy } from 'svelte';
+    import { scrollRef, scrollElement } from 'svelte-scrolling'
+    import { refs, scrolls } from "../data/stores";
+    import { inview } from 'svelte-inview';
 
-    export let docSet = "";
-    export let book = "";
-    export let chapter = "";
+    export let refKey = "default";
+    export let scrollGroup = "default"
+
+    let removeKeys = [refs.addKey(refKey), scrolls.addKey(scrollGroup)]
+    const changeKeys = (/**@type{string[]}*/keys, /**@type{any[]}*/stores) => {
+        for(let i = 0; i < keys.length; i++) {
+            removeKeys[i]()
+            removeKeys[i] = stores[i].addKey(keys[i])
+        }  
+    }
+    $: changeKeys([refKey, scrollGroup], [refs, scrolls])
+
+    $: scrollElement($scrolls[scrollGroup])
+    $: console.log($scrolls[scrollGroup])
+
+    /**@type{any[]}*/let verses = []
+
+    const handleEnter = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
+        verses.push(id)
+        verses.sort((a,b) => {
+            if(a === "title") return -1
+            return a - b
+        })
+    }
+
+    const handleLeave = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
+        verses = verses.filter(v => v !== id)
+        if(verses.length > 0) $scrolls = {key: scrollGroup, val: verses[0]}
+    }
 
     $: promise = queryPk(`{
-        docSet(id:"${docSet}") {
-            document(bookCode: "${book}") {
-                title: header(id: "toc2")
+        docSet(id:"${$refs[refKey].docSet}") {
+            document(bookCode: "${$refs[refKey].book}") {
                 mainSequence {
-                    blocks(withScriptureCV: "${chapter}") {
+                    blocks(withScriptureCV: "${$refs[refKey].chapter}") {
                         bs { payload }
                         items { type subType payload }
                     }
@@ -46,23 +75,33 @@
 
         return rendered;
     }*/
+    onDestroy(() => removeKeys.forEach(rk => rk()))
 </script>
 
 <article class="prose mx-auto">
     {#await promise}
         <p>...waiting</p>
     {:then data}
-        <h1>{JSON.parse(data).data.docSet?.document?.title}</h1>
-        <h2>Chapter: {chapter}</h2>
+        <h1 use:scrollRef={"title"}
+            use:inview
+            on:enter={(e) => handleEnter(e, "title")}
+            on:leave={(e) => handleLeave(e, "title")}
+        >{$refs[refKey].title}</h1>
+        <h2>Chapter: {$refs[refKey].chapter}</h2>
         {#if Array.isArray(JSON.parse(data).data.docSet?.document?.mainSequence.blocks)}
             {#each JSON.parse(data).data.docSet?.document?.mainSequence.blocks as block, i}
                 <div class="{i === 0?"m":"p"}">
                     {#each block.items as item}
                         {#if item.type === "scope" && item.subType === "start"}
                             {#if item.payload.split("/")[0] === "verses"}
-                                <em id="{item.payload.split("/")[1]}">{item.payload.split("/")[1]}</em><span>&nbsp;</span>
+                                <em id="{item.payload.split("/")[1]}"
+                                    use:scrollRef={item.payload.split("/")[1]}
+                                    use:inview
+                                    on:enter={(e) => handleEnter(e, item.payload.split("/")[1])}
+                                    on:leave={(e) => handleLeave(e, item.payload.split("/")[1])}
+                                >{item.payload.split("/")[1]}</em><span>&nbsp;</span>
                             {:else}
-                                <span></span>
+                                <!---->
                             {/if}
                         {:else if item.type === "token"}
                             {item.payload}
