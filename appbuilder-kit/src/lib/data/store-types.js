@@ -2,8 +2,8 @@
 import { writable, derived, get } from "svelte/store";
 import { catalog } from './constants'
 
-export const referenceStore = (/**@type{any}*/init) => {
-    const internal = writable(init? init: {ds:"",b:"",c:"",n:0})
+export const referenceStore = () => {
+    const internal = writable({ds:"",b:"",c:"",n:0})
     const setInternal = ({docSet, book, chapter}) => {
         const original = get(internal)
         const docSets = catalog.map(ds => ds.id)
@@ -23,6 +23,7 @@ export const referenceStore = (/**@type{any}*/init) => {
             n: Object.keys(versesByChapters[chapter]).length
         })
     }
+    setInternal({docSet:"", book:"", chapter:""})
     const external = derived(internal, ($internal) => ({
         reference: `${$internal.b} ${$internal.c}${$internal.n === ""? "":":"+$internal.n}`,
         docSet: $internal.ds,
