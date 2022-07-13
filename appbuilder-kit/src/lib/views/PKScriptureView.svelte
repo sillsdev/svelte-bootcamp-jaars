@@ -4,7 +4,6 @@
     export let docSet = "";
     export let book = "";
     export let chapter = "";
-    //export let height;
 
     $: promise = queryPk(`{
         docSet(id:"${docSet}") {
@@ -19,10 +18,7 @@
             }
         }
     }`);
-
-    /**
-    * @param {string} data
-    */
+    /*
     function renderChapter(data) {
         const blocks = JSON.parse(data).data.docSet?.document?.mainSequence.blocks;
         if(!blocks) return "waiting on Proskomma...";
@@ -32,9 +28,6 @@
         return rendered;
     }
     
-    /**
-    * @param {{ items: any[]; }} block
-    */
     function renderBlock(block) {
         let rendered = "";
         for(let i = 0; i < block.items.length; i++) {
@@ -52,7 +45,7 @@
         }
 
         return rendered;
-    }
+    }*/
 </script>
 
 <article class="prose mx-auto">
@@ -61,7 +54,25 @@
     {:then data}
         <h1>{JSON.parse(data).data.docSet?.document?.title}</h1>
         <h2>Chapter: {chapter}</h2>
-        {@html renderChapter(data)}
+        {#if Array.isArray(JSON.parse(data).data.docSet?.document?.mainSequence.blocks)}
+            {#each JSON.parse(data).data.docSet?.document?.mainSequence.blocks as block, i}
+                <div class="{i === 0?"m":"p"}">
+                    {#each block.items as item}
+                        {#if item.type === "scope" && item.subType === "start"}
+                            {#if item.payload.split("/")[0] === "verses"}
+                                <em id="{item.payload.split("/")[1]}">{item.payload.split("/")[1]}</em><span>&nbsp;</span>
+                            {:else}
+                                <span></span>
+                            {/if}
+                        {:else if item.type === "token"}
+                            {item.payload}
+                        {/if}
+                    {/each}
+                </div>
+            {/each}
+        {:else}
+            <p>waiting on Proskomma...</p>
+        {/if}
     {:catch error}
         <p style="color: red">{error.message}</p>
     {/await}
