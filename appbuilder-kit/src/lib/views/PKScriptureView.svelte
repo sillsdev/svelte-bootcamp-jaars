@@ -13,22 +13,18 @@
         for(let i = 0; i < keys.length; i++) {
             removeKeys[i]()
             removeKeys[i] = stores[i].addKey(keys[i])
-        }  
+        }
     }
     $: changeKeys([refKey, scrollGroup], [refs, scrolls])
 
     /**@type{HTMLElement}*/let container;
+    
     const scroll = (/**@type{string}*/id) => {
-        let els = container?.getElementsByClassName("scroll-item")
-        let el = els?.namedItem(id)
-        //console.log(el)
-        el?.scrollIntoView({behavior: "smooth"})
+        container?.getElementsByClassName("scroll-item")?.namedItem(id)?.scrollIntoView()
     }
     $: scroll($scrolls[scrollGroup]+"-"+viewId)
-    //$: console.log($scrolls[scrollGroup]+"-"+viewId)
 
     /**@type{string[]}*/let verses = []
-    $: console.log(viewId+": "+JSON.stringify(verses))
 
     /**
      * setTimeout id for handleChange
@@ -36,7 +32,7 @@
     */let changeTimer;
     const handleChange = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
         clearTimeout(changeTimer)
-        console.log(id+" "+e.detail.inView+" "+e.detail.scrollDirection.vertical)
+        //console.log(id+" "+e.detail.inView+" "+e.detail.scrollDirection.vertical)
         if(e.detail.inView) {
             verses.push(id)
             verses = verses.sort((a,b) => {
@@ -80,7 +76,6 @@
             rendered += `<div class="${i === 0?"m":"p"}">${renderBlock(blocks[i])}</div>`
         return rendered;
     }
-    
     function renderBlock(block) {
         let rendered = "";
         for(let i = 0; i < block.items.length; i++) {

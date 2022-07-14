@@ -9,17 +9,24 @@
     $: panes = [
         {component: PkScriptureView, props:{
             refKey: "pane 1",
-            viewId: "1"
+            viewId: "1",
+            scrollGroup: "main"
         }},
         {component: PkScriptureView, props:{
             refKey: "pane 2",
-            viewId: "2"
+            viewId: "2",
+            scrollGroup: "main"
         }},
         {component: PkScriptureView, props:{
             refKey: "pane 3",
-            viewId: "3"
+            viewId: "3",
+            scrollGroup: "main"
         }},
-        {component: SearchView, props:{}}
+        {component: PkScriptureView, props:{
+            refKey: "pane 4",
+            viewId: "4",
+            scrollGroup: "main"
+        }}
     ];
 </script>
 
