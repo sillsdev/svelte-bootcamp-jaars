@@ -22,24 +22,41 @@
         let els = container?.getElementsByClassName("scroll-item")
         let el = els?.namedItem(id)
         //console.log(el)
-        el?.scrollIntoView()
+        el?.scrollIntoView({behavior: "smooth"})
     }
     $: scroll($scrolls[scrollGroup]+"-"+viewId)
     //$: console.log($scrolls[scrollGroup]+"-"+viewId)
 
-    /**@type{any[]}*/let versesInView = []
+    /**@type{string[]}*/let verses = []
+    $: console.log(viewId+": "+JSON.stringify(verses))
 
-    const handleEnter = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
-        versesInView.push(id)
-        versesInView.sort((a,b) => {
-            if(a === "title") return -1
-            return a - b
-        })
-    }
-
-    const handleLeave = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
-        versesInView = versesInView.filter(v => v !== id)
-        if(versesInView.length > 0) $scrolls = {key: scrollGroup, val: versesInView[0]}
+    /**
+     * setTimeout id for handleChange
+    * @type {NodeJS.Timeout}
+    */let changeTimer;
+    const handleChange = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
+        clearTimeout(changeTimer)
+        console.log(id+" "+e.detail.inView+" "+e.detail.scrollDirection.vertical)
+        if(e.detail.inView) {
+            verses.push(id)
+            verses = verses.sort((a,b) => {
+                if(a === "title") return -1
+                return parseInt(a) - parseInt(b)
+            })
+        }
+        else {
+            verses = verses.filter(v => v !== id)
+        }
+        if(verses.length > 0) changeTimer = setTimeout(() => {
+                $scrolls = {key: scrollGroup, val: verses[0]}
+            }, 500)
+        /* handleEnter
+        if(verses.length > 0 && e.detail.scrollDirection.vertical === "up") $scrolls = {key: scrollGroup, val: verses[0]}
+        */
+        /* handleLeave
+        verses = verses.filter(v => v !== id)
+        if(verses.length > 0  && e.detail.scrollDirection.vertical === "down") $scrolls = {key: scrollGroup, val: verses[0]}
+        */
     }
 
     $: promise = queryPk(`{
@@ -83,19 +100,21 @@
         return rendered;
     }*/
     onDestroy(() => removeKeys.forEach(rk => rk()))
+    const options = {threshold: 0.5}
 </script>
 
 <article class="prose mx-auto" bind:this={container}>
     {#await promise}
         <p>...waiting</p>
     {:then data}
-        <h1 id="title-{viewId}"
+        <div
+            id="title-{viewId}"
             class="scroll-item"
-            use:inview
-            on:enter={(e) => handleEnter(e, "title")}
-            on:leave={(e) => handleLeave(e, "title")}
-        >{$refs[refKey].title}</h1>
-        <h2>Chapter: {$refs[refKey].chapter}</h2>
+            use:inview={options}
+            on:change={(e) => handleChange(e, "title")}>
+            <h1>{$refs[refKey].title}</h1>
+            <h2>Chapter: {$refs[refKey].chapter}</h2>
+        </div>
         {#if Array.isArray(JSON.parse(data).data.docSet?.document?.mainSequence.blocks)}
             {#each JSON.parse(data).data.docSet?.document?.mainSequence.blocks as block, i}
                 <div class="{i === 0?"m":"p"}">
@@ -104,9 +123,8 @@
                             {#if item.payload.split("/")[0] === "verses"}
                                 <em id="{item.payload.split("/")[1]}-{viewId}"
                                     class="scroll-item"
-                                    use:inview
-                                    on:enter={(e) => handleEnter(e, item.payload.split("/")[1])}
-                                    on:leave={(e) => handleLeave(e, item.payload.split("/")[1])}
+                                    use:inview={options}
+                                    on:change={(e) => handleChange(e, item.payload.split("/")[1])}
                                 >{item.payload.split("/")[1]}</em><span>&nbsp;</span>
                             {:else}
                                 <!---->
