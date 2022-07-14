@@ -32,7 +32,7 @@ export const referenceStore = () => {
         chapterVerses: `${$internal.c}:1-${$internal.n}`,
         numVerses: $internal.n,
         title: catalog.find(ds => ds.id === $internal.ds)
-            .documents.find(b => b.bookCode === $internal.b).toc
+            .documents?.find(b => b.bookCode === $internal.b).toc
     }))
     return {subscribe: external.subscribe, set: setInternal}
 }

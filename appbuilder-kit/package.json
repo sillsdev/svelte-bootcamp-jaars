@@ -39,7 +39,6 @@
 		"proskomma": "^0.7.5",
 		"proskomma-freeze": "^0.7.0",
 		"proskomma-tools": "^0.0.5",
-		"svelte-inview": "^3.0.1",
-		"svelte-scrolling": "^1.2.1"
+		"svelte-inview": "^3.0.1"
 	}
 }

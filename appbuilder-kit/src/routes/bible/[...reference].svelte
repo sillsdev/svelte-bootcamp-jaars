@@ -22,8 +22,4 @@
     })();
 </script>
 
-<PkScriptureView 
-    docSet={$refs["default"].docSet}
-    book={$refs["default"].book}
-    chapter={$refs["default"].chapter}
-/>
+<PkScriptureView />

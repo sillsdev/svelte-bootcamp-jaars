@@ -1,12 +1,12 @@
 <script>
     import { queryPk } from '$lib/scripts/queryPk';
     import { onDestroy } from 'svelte';
-    import { scrollRef, scrollElement } from 'svelte-scrolling'
     import { refs, scrolls } from "../data/stores";
     import { inview } from 'svelte-inview';
 
     export let refKey = "default";
     export let scrollGroup = "default"
+    export let viewId = ""
 
     let removeKeys = [refs.addKey(refKey), scrolls.addKey(scrollGroup)]
     const changeKeys = (/**@type{string[]}*/keys, /**@type{any[]}*/stores) => {
@@ -17,22 +17,29 @@
     }
     $: changeKeys([refKey, scrollGroup], [refs, scrolls])
 
-    $: scrollElement($scrolls[scrollGroup])
-    $: console.log($scrolls[scrollGroup])
+    /**@type{HTMLElement}*/let container;
+    const scroll = (/**@type{string}*/id) => {
+        let els = container?.getElementsByClassName("scroll-item")
+        let el = els?.namedItem(id)
+        //console.log(el)
+        el?.scrollIntoView()
+    }
+    $: scroll($scrolls[scrollGroup]+"-"+viewId)
+    //$: console.log($scrolls[scrollGroup]+"-"+viewId)
 
-    /**@type{any[]}*/let verses = []
+    /**@type{any[]}*/let versesInView = []
 
     const handleEnter = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
-        verses.push(id)
-        verses.sort((a,b) => {
+        versesInView.push(id)
+        versesInView.sort((a,b) => {
             if(a === "title") return -1
             return a - b
         })
     }
 
     const handleLeave = (/**@type{CustomEvent<ObserverEventDetails>}*/e, /**@type{string}*/id) => {
-        verses = verses.filter(v => v !== id)
-        if(verses.length > 0) $scrolls = {key: scrollGroup, val: verses[0]}
+        versesInView = versesInView.filter(v => v !== id)
+        if(versesInView.length > 0) $scrolls = {key: scrollGroup, val: versesInView[0]}
     }
 
     $: promise = queryPk(`{
@@ -78,11 +85,12 @@
     onDestroy(() => removeKeys.forEach(rk => rk()))
 </script>
 
-<article class="prose mx-auto">
+<article class="prose mx-auto" bind:this={container}>
     {#await promise}
         <p>...waiting</p>
     {:then data}
-        <h1 use:scrollRef={"title"}
+        <h1 id="title-{viewId}"
+            class="scroll-item"
             use:inview
             on:enter={(e) => handleEnter(e, "title")}
             on:leave={(e) => handleLeave(e, "title")}
@@ -94,8 +102,8 @@
                     {#each block.items as item}
                         {#if item.type === "scope" && item.subType === "start"}
                             {#if item.payload.split("/")[0] === "verses"}
-                                <em id="{item.payload.split("/")[1]}"
-                                    use:scrollRef={item.payload.split("/")[1]}
+                                <em id="{item.payload.split("/")[1]}-{viewId}"
+                                    class="scroll-item"
                                     use:inview
                                     on:enter={(e) => handleEnter(e, item.payload.split("/")[1])}
                                     on:leave={(e) => handleLeave(e, item.payload.split("/")[1])}

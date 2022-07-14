@@ -8,13 +8,16 @@
 
     $: panes = [
         {component: PkScriptureView, props:{
-            refKey: "pane 1"
+            refKey: "pane 1",
+            viewId: "1"
         }},
         {component: PkScriptureView, props:{
-            refKey: "pane 2"
+            refKey: "pane 2",
+            viewId: "2"
         }},
         {component: PkScriptureView, props:{
-            refKey: "pane 3"
+            refKey: "pane 3",
+            viewId: "3"
         }},
         {component: SearchView, props:{}}
     ];
